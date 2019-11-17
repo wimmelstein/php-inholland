@@ -1,0 +1,49 @@
+version: '3.1'
+
+services:
+
+  db:
+      image: wimmelsoft/mysql-inholland:0.1
+      deploy:
+         restart_policy:
+           condition: on-failure
+           delay: 5s
+           max_attempts: 3
+           window: 120s
+      command: --default-authentication-plugin=mysql_native_password
+      environment:
+        MYSQL_ROOT_PASSWORD: mysql
+      cap_add:
+      - SYS_NICE  # CAP_SYS_NIC
+      networks:
+      - php  
+
+  server:
+       image: wimmelsoft/php-mysqli:0.1
+       build: .
+       depends_on:
+         - db
+       deploy:
+         restart_policy:
+           condition: on-failure
+           delay: 5s
+           max_attempts: 3
+           window: 120s    
+       ports:
+         - 80:80
+       networks:
+          - php
+       volumes:
+          - d:\workspace\php\src:/var/www/html
+
+  adminer:
+     image: adminer
+     restart: always
+     ports:
+       - 8080:8080
+     networks:
+       - php  
+   
+networks:
+  php:
+    driver: overlay
