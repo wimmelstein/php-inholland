@@ -1,6 +1,6 @@
 FROM mysql:latest
 
-ENV MYSQL_DATABASE inholland
-ENV MYSQL_ROOT_PASSWORD mysql
+ENV MYSQL_DATABASE users
+ENV MYSQL_ROOT_PASSWORD 123456
 
 COPY ./sql-scripts/ /docker-entrypoint-initdb.d/

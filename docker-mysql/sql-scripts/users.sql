@@ -1,65 +1,64 @@
--- phpMyAdmin SQL Dump
--- version 4.4.15.9
--- https://www.phpmyadmin.net
---
--- Host: localhost
--- Gegenereerd op: 17 nov 2019 om 15:31
--- Serverversie: 5.6.37
--- PHP-versie: 5.6.31
+CREATE TABLE `users` (
+`id` int(11) NOT NULL,
+`name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `inholland`
---
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `users`
---
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(20) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `age` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
-
---
--- Gegevens worden geëxporteerd voor tabel `users`
---
-
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `age`) VALUES
-(9, 'Wim', 'Wiltenburg', 51),
-(10, 'Jan', 'Jansen', 32);
-
---
--- Indexen voor geëxporteerde tabellen
---
-
---
--- Indexen voor tabel `users`
---
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`id`),
+ADD KEY `name` (`name`);
 
---
--- AUTO_INCREMENT voor geëxporteerde tabellen
---
-
---
--- AUTO_INCREMENT voor een tabel `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `users` (`id`, `name`) VALUES
+(24, 'Abby Ward'),
+(21, 'Aleksandra Devine'),
+(43, 'Aston Simmonds'),
+(47, 'Aston Simmonds'),
+(15, 'Beth Skywalker'),
+(26, 'Bridget Wooten'),
+(10, 'Coby Kelleigh'),
+(20, 'Darrah Shadow'),
+(9, 'Drake Adelaide'),
+(12, 'Elizabeth Stewart'),
+(19, 'Gareth Solderini'),
+(42, 'Gregor Bryant'),
+(46, 'Gregor Bryant'),
+(13, 'Hannah Strickland'),
+(52, 'Harvey Frame'),
+(7, 'Imogene Thad'),
+(53, 'Ismaeel Carty'),
+(41, 'Issac Calderon'),
+(45, 'Issac Calderon'),
+(2, 'Jane Doe'),
+(5, 'Jaslyn Keely'),
+(40, 'Jax Howe'),
+(39, 'Joey Whyte'),
+(1, 'John Doe'),
+(17, 'Joseph Stewart'),
+(34, 'Julia Greaves'),
+(31, 'Junior Douglas'),
+(32, 'Kaiden Bentley'),
+(16, 'Kenneth Sanders'),
+(30, 'Keziah Knapp'),
+(28, 'Kirstie Thomas'),
+(33, 'Lawrence Murphy'),
+(14, 'Leah Shan'),
+(51, 'Marcus Best'),
+(29, 'Maya Paine'),
+(23, 'Myla Bostock'),
+(50, 'Nathaniel Khan'),
+(4, 'Peers Sera'),
+(6, 'Richard Breann'),
+(54, 'Rowan Avalos'),
+(3, 'Rusty Terry'),
+(37, 'Sacha Gross'),
+(27, 'Sally Castillo'),
+(11, 'Sarah Sanders'),
+(18, 'Seth Sonnel'),
+(38, 'Shannon Peterson'),
+(25, 'Shayan Clements'),
+(49, 'Shoaib Vickers'),
+(35, 'Sulaiman Gilmour'),
+(44, 'Taran Morin'),
+(48, 'Taran Morin'),
+(22, 'Thelma Kim'),
+(8, 'Tillie Sharalyn'),
+(36, 'Virgil Collier');
