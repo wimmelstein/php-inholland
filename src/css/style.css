@@ -1,0 +1,29 @@
+    body {
+        margin: 10px 20px;
+    }
+    header {
+        height: 100px;
+        background-color: #F3F7F0;
+    }
+
+    #container {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        width: 100%;
+      }
+
+    .left {
+        width: 50%;
+    }
+
+    .right {
+        width: 50%;
+    }
+    #food {
+        background-color: #8C5E58;
+    }
+    #quit {
+        background-color: #19323C;
+        color: #fff;    
+    }
