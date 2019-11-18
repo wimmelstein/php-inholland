@@ -25,4 +25,14 @@ function persistUser($first_name, $last_name, $age) {
 
 }
 
+function deleteUser($id) {
+    $conn = OpenCon();
+
+    $stmt = $conn->prepare("DELETE FROM users where id=?");
+    $stmt->bind_param('i', $id);
+
+    $stmt->execute();
+
+    CloseCon($conn);
+}
 ?>
