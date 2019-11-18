@@ -34,7 +34,7 @@ services:
        networks:
           - php
        volumes:
-          - /Users/wimmel/workspace/php-inholland/src:/var/www/html
+          - D:\workspace\php\src:/var/www/html
 
   adminer:
      image: adminer
