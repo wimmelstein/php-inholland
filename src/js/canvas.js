@@ -1,5 +1,4 @@
-var canvas = document.getSelection('canvas');
-console.log(canvas);
-canvas.width = 600;
-canvas.height = 400;
-console.log(canvas);
+var canvas = document.getElementById("canvas");
+canvas.height = 250;
+canvas.width = 400;
+var signature = new SignaturePad(canvas);
