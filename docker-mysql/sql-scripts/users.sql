@@ -38,8 +38,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `age`) VALUES
-(9, 'Wim', 'Wiltenburg', 51),
-(10, 'Jan', 'Jansen', 32);
+(NULL, 'Wim', 'Wiltenburg', 51),
+(NULL, 'Jan', 'Jansen', 32);
 
 --
 -- Indexen voor geëxporteerde tabellen
