@@ -25,10 +25,11 @@
     </header>
     <section id="body">
         <canvas id="canvas"></canvas>
-        <div id="buttons">
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="submit" class="btn btn-secondary">Reset</button>
         <script src="js/canvas.js"></script>
+        <div id="buttons">
+            <button type="submit" class="btn btn-primary" onClick="saveImage()">Save</button>
+            <button type="submit" class="btn btn-secondary" onClick="reset()">Reset</button>
+
     </section>    
     </body>
 </html>
