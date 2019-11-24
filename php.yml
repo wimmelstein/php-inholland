@@ -37,6 +37,8 @@ services:
           - php
        volumes:
           - ./src:/var/www/html
+          - ./ini:/usr/local/etc/php/conf.d
+
 
   adminer:
      image: adminer
