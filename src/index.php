@@ -11,8 +11,8 @@
 
   <script>
     function deleteFile(filename) {
-      mustDelete = confirm('Are you sure?');
-      if (mustDelete) {
+      //mustDelete = confirm('Are you sure?');
+      if (confirm('Are you sure?')) {
         window.location.replace('delete.php?name=' + filename);
       }
     }
@@ -55,9 +55,9 @@
                 echo is_dir($filename)
                   ? 'directory</td><td></td>'
                   : 'regular file</td><td><button class="btn btn-link" onclick="deleteFile(this.id)" id="'
-                  . $filename
-                  . '">delete</button></td>';
-                ?>
+                    . $filename
+                    . '">delete</button></td>';
+                  ?>
         </tr>
 
       <?php
