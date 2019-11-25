@@ -17,7 +17,7 @@
       }
     }
   </script>
-  
+
   <title>File Manager</title>
 </head>
 
@@ -47,13 +47,17 @@
       foreach ($files1 as $filename) {
         ?>
         <tr>
-          <td><?php echo $filename ?> </td>
-          <td><?php echo (is_dir($filename)) ? 'directory' : 'regular file'; ?></td>
-          <td><?php 
-              echo !is_dir($filename) 
-              ? '<button class="btn btn-link" onclick="deleteFile(this.id)" id="' . $filename . '">delete</button>'
-              : ''; ?>
-           </td>   
+          <td><?php
+                echo $filename
+                ?>
+          </td>
+          <td><?php
+                echo is_dir($filename)
+                  ? 'directory</td><td></td>'
+                  : 'regular file</td><td><button class="btn btn-link" onclick="deleteFile(this.id)" id="'
+                  . $filename
+                  . '">delete</button></td>';
+                ?>
         </tr>
 
       <?php
@@ -61,12 +65,16 @@
       ?>
     </tbody>
   </table>
-  <div class="container-form">
-    <form name="upload" method="post" action="upload.php" enctype="multipart/form-data">
-      <input type="file" class="form-control-file" name="fileToUpload"  id="fileToUpload">
-      <button type="submit" class="btn btn-primary">Upload</button>
-    </form>
-  </div>
+
+  <form name="upload" method="post" action="upload.php" enctype="multipart/form-data">
+    <div class="form-row">
+      <div class="col">
+        <input type="file" class="form-control-file" name="fileToUpload"  id="fileToUpload">
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </div>
+  </form>
 </body>
 
 </html>
