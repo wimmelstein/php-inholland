@@ -10,5 +10,9 @@ function saveImage() {
 
 function reset() {
 
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i=0; i< 10; i++) {
+        context.fillRect(100 + i,100 + i, 100,100);
+    }
+    
+   // context.clearRect(0, 0, canvas.width, canvas.height);
 }
