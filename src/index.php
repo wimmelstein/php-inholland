@@ -11,7 +11,6 @@
 
   <script>
     function deleteFile(filename) {
-      //mustDelete = confirm('Are you sure?');
       if (confirm('Are you sure?')) {
         window.location.replace('delete.php?name=' + filename);
       }
