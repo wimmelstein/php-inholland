@@ -14,31 +14,9 @@
   <meta http-equiv="Cache-control" content="no-cache" />
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script>
-    function deleteUser(id) {
-      $.ajax({
-        type: "DELETE",
-        url: "http://localhost/users/" + id,
-        success: function(msg) {
-          window.location.reload();
-        }
-      });
-    }
+  <script src="js/user.js"></script>
 
-    function addUser() {
-      
-      $.ajax({
-        type: "POST",
-        url: "http://localhost/users",
-        data: $("#new-user").serialize(),
-        success: function(e) { 
-          window.location.reload();
-        }
-      })
-    }
-  </script>
-
-  <title>Document</title>
+  <title>Users REST API</title>
 </head>
 
 <body>
@@ -71,15 +49,14 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Naam</th>
+        <th>First name</th>
+        <th>Last name</th>
         <th>Age</th>
         <th>
       </tr>
     </thead>
 
     <tbody>
-
-
       <?php
       $users = json_decode(file_get_contents('http://localhost/users'));
       foreach ($users as $u) {
@@ -88,9 +65,10 @@
 
         ?>
         <td><?php echo $user->getId() ?></td>
-        <td><?php echo $user->getUserName() ?></td>
+        <td><?php echo $user->getFirstName() ?></td>
+        <td><?php echo $user->getLastName() ?></td>
         <td><?php echo $user->getAge() ?></td>
-        <td>
+        <td align="right">
           <form>
             <button type="submit" onclick="deleteUser(<?php echo $user->getId() ?>)" class="btn btn-secondary">Delete</button>
           </form>
@@ -103,5 +81,4 @@
   </table>
 
 </body>
-
 </html>
