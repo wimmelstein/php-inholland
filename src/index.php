@@ -1,4 +1,4 @@
-<?php require_once('classes.php'); ?>
+<?php require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
