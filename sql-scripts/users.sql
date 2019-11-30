@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(30) NOT NULL,
   `age` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `users`
@@ -50,6 +50,8 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `age`) VALUES
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
+
+
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
