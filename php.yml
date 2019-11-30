@@ -3,7 +3,7 @@ version: '3.1'
 services:
 
   db:
-      image: wimmelsoft/mysql-inholland:0.1
+      image: mysql:latest
       deploy:
          restart_policy:
            condition: on-failure
@@ -12,9 +12,11 @@ services:
            window: 120s
       command: --default-authentication-plugin=mysql_native_password
       environment:
+        MYSQL_DATABASE: inholland
+        MYSQL_USER: root
         MYSQL_ROOT_PASSWORD: mysql
-      cap_add:
-      - SYS_NICE  # CAP_SYS_NIC
+      volumes:
+        - ./sql-scripts:/docker-entrypoint-initdb.d/
       networks:
       - php  
 
@@ -34,7 +36,7 @@ services:
        networks:
           - php
        volumes:
-          - D:\workspace\php\src:/var/www/html
+          - ./src:/var/www/html
 
   adminer:
      image: adminer
