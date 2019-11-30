@@ -20,10 +20,21 @@
         type: "DELETE",
         url: "http://localhost/users/" + id,
         success: function(msg) {
-          alert("Data Deleted: " + msg);
+          window.location.reload();
         }
       });
+    }
 
+    function addUser() {
+      
+      $.ajax({
+        type: "POST",
+        url: "http://localhost/users",
+        data: $("#new-user").serialize(),
+        success: function(e) { 
+          window.location.reload();
+        }
+      })
     }
   </script>
 
@@ -37,6 +48,23 @@
       <p>Demonstration of REST API for users</p>
     </div>
   </div>
+
+  <form method="post" id="new-user">
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="First name" name="first_name" required autofocus>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Last name" name="last_name" required>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="age" name="age">
+      </div>
+      <button type="submit" class="btn btn-secondary" onclick="addUser()">Add</button>
+    </div>
+  </form>
+
+
 
   <table id="example" class="table table-hover" style="width:100%">
 
