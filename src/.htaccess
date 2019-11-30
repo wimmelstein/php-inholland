@@ -1,5 +1,5 @@
 Options +FollowSymLinks
 RewriteEngine On
  
-RewriteRule ^users/?$ users.php [NC,L]
-RewriteRule ^users/([0-9]+)/?$ users.php?id=$1 [NC,L]
+RewriteRule ^users/?$ /controller/UserController.php [NC,L]
+RewriteRule ^users/([0-9]+)/?$ /controller/UserController.php?id=$1 [NC,L]

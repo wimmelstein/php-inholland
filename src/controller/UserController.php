@@ -1,6 +1,6 @@
 <?php
 
-require_once('classes.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes.php');
 
 $request = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];

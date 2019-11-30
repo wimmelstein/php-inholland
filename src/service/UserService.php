@@ -1,5 +1,5 @@
 <?php
-require_once 'classes.php';
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes.php');
 
 function getAllUsers() {
     
