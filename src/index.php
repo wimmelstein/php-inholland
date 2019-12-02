@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <form method="post" id="new-user">
+  <form method="post" id="new-user" class="inline">
     <div class="row">
       <div class="col">
         <input type="text" class="form-control" placeholder="First name" name="first_name" required autofocus>
