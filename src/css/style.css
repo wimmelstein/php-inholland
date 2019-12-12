@@ -1,0 +1,8 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 100px;
+}
+
+.inline {
+    padding: .5em 2em 2em 2em;  
+}
