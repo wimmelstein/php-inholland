@@ -23,13 +23,30 @@
       <p>Demonstration of Mollie Payment</p>
     </div>
   </div>
+  <!-- 
+  <form>
+    <div class="form-check mb-2 mr-sm-2">
+      <input type="text" name="amount" id="am ount" placeholder="amount">
+      <input type="text" name="description" id="desciption" placeholder="description">
+    </div>
+    <button type="button" class="btn btn-secondary">Make payment</button>
+  </form> -->
 
-  <form class="form-inline" action="pay.php">
-    <input type="text" name="amount" id="am ount" placeholder="amount">
-    <input type="text" name="description" id="desciption" placeholder="description">
-    <button type="submit">Make payment</button>
+  <form class="form-inline" method="post" action="pay.php">
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Description" id="description" name="description">
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-secondary">Make payment</button>
+      </div>
+
+
+    </div>
   </form>
-
 </body>
 
 </html>
