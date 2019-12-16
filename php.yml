@@ -21,8 +21,7 @@ services:
       - php  
 
   server:
-       image: wimmelsoft/php-mysqli:0.2
-       build: .
+       image: wimmelsoft/php-mysqli:0.3
        depends_on:
          - db
        deploy:
@@ -37,10 +36,11 @@ services:
           - php
        volumes:
           - ./src:/var/www/html
+          - ./vendor/:/var/www/
+          - ./mollie:/var/
 
   adminer:
      image: adminer
-     restart: always
      ports:
        - 8080:8080
      networks:

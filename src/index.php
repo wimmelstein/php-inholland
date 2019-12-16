@@ -12,7 +12,6 @@
   <meta http-equiv="Cache-control" content="no-cache" />
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="js/user.js"></script>
 
   <title>Users REST API</title>
 </head>
@@ -25,23 +24,12 @@
     </div>
   </div>
 
-<?php
-
-    $amount = new \stdClass();
-    $amount->currency = "EUR";
-    $amount->value = "10.00";
-
-    $payment = new \stdClass();
-    $payment->amount = $amount;
-    $payment->webhook = "https://wiltenburg.eu/process.php";
-
-    echo json_encode($payment);
-
-
-?>
-
-
-
+  <form class="form-inline" action="pay.php">
+    <input type="text" name="amount" id="am ount" placeholder="amount">
+    <input type="text" name="description" id="desciption" placeholder="description">
+    <button type="submit">Make payment</button>
+  </form>
 
 </body>
+
 </html>
