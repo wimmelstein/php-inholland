@@ -1,0 +1,3 @@
+[Wed Dec 18 11:14:55.121753 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.2.24 configured -- resuming normal operations
+[Wed Dec 18 11:14:55.121956 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Wed Dec 18 11:16:48.035657 2019] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully

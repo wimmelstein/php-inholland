@@ -36,8 +36,7 @@ services:
           - php
        volumes:
           - ./src:/var/www/html
-          - ./vendor/:/var/www/
-          - ./mollie:/var/
+          - ./mollie/:/var/www/mollie
 
   adminer:
      image: adminer

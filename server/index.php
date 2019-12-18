@@ -48,7 +48,7 @@ require('db.php');
     CloseCon($conn);
     if ($result->num_rows > 0) {
 
-        while($row = $result->mysql_fetch_assoc()) {
+        while($row = mysqli_fetch_assoc($result)) {
 
          ?>
             <tr>
