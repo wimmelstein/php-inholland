@@ -1,5 +1,0 @@
-10.255.0.2 - - [18/Dec/2019:11:15:07 +0000] "GET / HTTP/1.1" 200 1050 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 OPR/65.0.3467.62"
-10.255.0.2 - - [18/Dec/2019:11:15:07 +0000] "GET /favicon.ico HTTP/1.1" 404 487 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 OPR/65.0.3467.62"
-10.255.0.2 - - [18/Dec/2019:11:15:16 +0000] "POST /pay.php HTTP/1.1" 200 491 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 OPR/65.0.3467.62"
-10.255.0.2 - - [18/Dec/2019:11:15:32 +0000] "POST /pay.php HTTP/1.1" 200 495 "http://127.0.0.1/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36 OPR/65.0.3467.62"
-10.255.0.2 - - [18/Dec/2019:11:16:23 +0000] "-" 408 0 "-" "-"
