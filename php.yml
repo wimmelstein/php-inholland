@@ -22,7 +22,6 @@ services:
 
   server:
        image: wimmelsoft/php-mysqli:0.2
-       build: .
        depends_on:
          - db
        deploy:
@@ -40,7 +39,12 @@ services:
 
   adminer:
      image: adminer
-     restart: always
+     deploy:
+      restart_policy: 
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s    
      ports:
        - 8080:8080
      networks:
