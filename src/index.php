@@ -12,13 +12,13 @@
         }
 
         function myConfirm() {
-            reply = confirm('Do you want to quit while you are ahead');
-            var quitDiv = document.getElementById('quit');
+            const reply = confirm('Do you want to quit while you are ahead');
+            const quitDiv = document.getElementById('quit');
             quitDiv.innerHTML = "The boolean value of this confirmation dialog is: " + reply;
         }
         function myPrompt() {
-            answer = prompt('What is your favorite food?');
-            var foodDiv = document.getElementById('food');
+            const answer = prompt('What is your favorite food?');
+            const foodDiv = document.getElementById('food');
             foodDiv.innerHTML = 'Favorite food: ' + answer;
         }
     </script>
