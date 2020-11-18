@@ -4,7 +4,7 @@ canvas.width = 700;
 const signature = new SignaturePad(canvas);
 const context = canvas.getContext('2d');
 function saveImage() {
-    var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
     window.location.href = image;
 }
 
