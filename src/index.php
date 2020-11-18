@@ -57,21 +57,20 @@ include ('controller/UserController.php');
     if ($result->num_rows > 0) {
 
         while($row = $result->fetch_assoc()) {
-       
-            echo "<tr>";
-            
-            echo "<td>" . $row["id"] . "</td>";
-            echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>";
-            echo "<td>" . $row["age"] . "</td>";
-            echo "<td>";
-            echo "<form method=\"delete\" action=\"controller/UserController.php?id=" 
-            . $row['id'] 
-            . "\">";
-            echo "<button type=\"submit\" class=\"btn btn-secondary\">Delete</button>";
-            echo "</form>";
-            echo "</td>";
-            echo "</tr>";
-            
+
+        ?>
+          <tr>
+            <td><?php echo $row['id']?></td>
+            <td><?php echo $row["first_name"] . " " . $row["last_name"]?></td>
+            <td><?php echo $row["age"]?>
+            <td>
+              <form method="delete" action="controller/UserController.php?id=<?php echo $row['id']?>">
+              <button type="submit" class="btn btn-secondary">Delete</button>
+              </form>
+            </td>
+          </tr>
+
+        <?php
         }
     }
 
