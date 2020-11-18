@@ -1,7 +1,7 @@
 var canvas = document.getElementById("canvas");
 canvas.height = 250;
-canvas.width = 400;
-var signature = new SignaturePad(canvas);
+canvas.width = 700;
+const signature = new SignaturePad(canvas);
 const context = canvas.getContext('2d');
 function saveImage() {
     var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
