@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Cache-control" content="no-cache"/>
 
-    <script>function my_alert() {
+    <script>
+        function my_alert() {
         alert('OK Boomer');
         }
 
