@@ -8,37 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="Cache-control" content="no-cache" />
 
-  <script>
-    function my_alert() {
-      alert('OK Boomer');
-    }
-
-    function myConfirm() {
-      const reply = confirm('Do you want to quit while you are ahead');
-      const quitDiv = document.getElementById('quit');
-      quitDiv.innerHTML = "The boolean value of this confirmation dialog is: " + reply;
-    }
-
-    function myPrompt() {
-      const answer = prompt('What is your favorite food?');
-      const foodDiv = document.getElementById('food');
-      foodDiv.innerHTML = 'Favorite food: ' + answer;
-    }
-  </script>
+  <script src="js/script.js"></script>
 </head>
 
 <body>
   <header>
     <h1 class="display4">Javascript events</h1>
-    <button type="submit" class="btn btn-primary btn-lg" onClick="my_alert()">Alert</button>
+    <button type="submit" class="btn btn-primary btn-lg" onClick="my_alert('boomer')">Alert</button>
     <button type="submit" class="btn btn-secondary btn-lg" onClick="myConfirm()">Confirm</button>
     <button type="submit" class="btn btn-success btn-lg" onClick="myPrompt()">Prompt</button>
+    <button type="submit" class="btn btn-secondary btn-lg" onclick="displayGuitars()">Display them</button>
   </header>
 
   <div id="container">
     <div id="food" class="left">Placeholder text food</div>
     <div id="quit" class="right">Placeholder text quit</div>
   </div>
+
+  <div id="guitars" class="left"></div>
 </body>
+
 
 </html>
