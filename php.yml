@@ -18,10 +18,10 @@ services:
       volumes:
         - ./sql-scripts:/docker-entrypoint-initdb.d/
       networks:
-      - php  
+      - wimmelsoft  
 
   server:
-       image: wimmelsoft/php-mysqli:0.1
+       image: wimmelsoft/php-mysqli:0.2
        build: .
        depends_on:
          - db
@@ -34,7 +34,7 @@ services:
        ports:
          - 80:80
        networks:
-          - php
+          - wimmelsoft
        volumes:
           - ./src:/var/www/html
           - ./ini:/usr/local/etc/php/conf.d
@@ -46,8 +46,8 @@ services:
      ports:
        - 8080:8080
      networks:
-       - php  
+       - wimmelsoft  
    
 networks:
-  php:
+  wimmelsoft:
     driver: overlay

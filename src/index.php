@@ -9,13 +9,7 @@
   <link href="/css/style.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <script>
-    function deleteFile(filename) {
-      if (confirm('Are you sure?')) {
-        window.location.replace('delete.php?name=' + filename);
-      }
-    }
-  </script>
+  <script src="js/script.js"></script>
 
   <title>File Manager</title>
 </head>
@@ -41,7 +35,7 @@
       <?php
       $dir = 'workdir';
       $files1 = scandir($dir);
-      $files2 = scandir($dir, 1);
+      $files2 = scandir($dir, 1); // sorted descending
 
       foreach ($files1 as $filename) {
         ?>

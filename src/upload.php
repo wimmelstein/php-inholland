@@ -1,43 +1,46 @@
 <?php
+
+// Set variables
 $target_dir = './workdir/';
 $target_file = $target_dir . basename($_FILES['fileToUpload']['name']);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-//Check if image file is a actual image or fake image
-if(isset($_POST)) {
-    $check = getimagesize($_FILES['fileToUpload']['tmp_name']);
-    if(explode('/', $check['mime'])[0] == "image") {
-        // echo "File is an image - " . $check['mime'] . ".<br>";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
+$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+$allowedFileTypes = array("jpg", "png", "jpeg", "gif");
+$errors = array();
+
+
+
+//Check if image file is a actual image or fake image and if the file has actually reached the server
+if (isset($_POST) && isset($_FILES['file'])) {
+    $check = getimagesize($_FILES['fileToUpload']['tmp_name']) or die('bla');
+    // Check the mime type and not the extension
+    if (!explode('/', $check['mime'])[0] == "image") {
+        array_push($errors, "File is not an image.");
     }
 }
+
 //Check if file already exists
 if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
+    array_push($errors, "File already exists.");;
 }
+
 // Check file size
 if ($_FILES['fileToUpload']['size'] > 500000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
+    array_push($errors, "File is too large.");
 }
+
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
+if (!in_array($imageFileType, $allowedFileTypes)) {
+    array_push($errors, "Only files of type JPG, JPEG, PNG or GIF are allowed.");
 }
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+
+// Check if the upload went OK, otherwise print the errors
+if (count($errors) == 0) {
+    move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file);
+    header('Location: /');  
 } else {
-    if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file)) {
-        header('Location: /');
-    } else {
-        echo "Sorry, there was an error uploading your file.";
+    foreach ($errors as $error) {
+        echo $error, '<br>';
     }
 }
+
+?>
