@@ -3,3 +3,8 @@ body {
     padding: 100px;
 }
 
+#messages {
+    color: red;
+    font-weight: bold;
+    font-size: 20;
+}

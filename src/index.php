@@ -38,19 +38,19 @@
       $files2 = scandir($dir, 1); // sorted descending
 
       foreach ($files1 as $filename) {
-        ?>
+      ?>
         <tr>
           <td><?php
-                echo $filename
-                ?>
+              echo $filename
+              ?>
           </td>
           <td><?php
-                echo is_dir($filename)
-                  ? 'directory</td><td></td>'
-                  : 'regular file</td><td><button class="btn btn-link" onclick="deleteFile(this.id)" id="'
-                    . $filename
-                    . '">delete</button></td>';
-                  ?>
+              echo is_dir($filename)
+                ? 'directory</td><td></td>'
+                : 'regular file</td><td><button class="btn btn-link" onclick="deleteFile(this.id)" id="'
+                . $filename
+                . '">delete</button></td>';
+              ?>
         </tr>
 
       <?php
@@ -68,6 +68,24 @@
         <button type="submit" class="btn btn-primary">Upload</button>
       </div>
   </form>
+
+  <div id="messages">
+
+    <?php
+
+    // Print error messages to the screen
+    $params = array();
+    parse_str($_SERVER['QUERY_STRING'], $params);
+    if (count($params) > 0) {
+      echo join("", $params);
+    } else {
+      echo "";
+    }
+    
+    ?>
+  </div>
+
+
 </body>
 
 </html>

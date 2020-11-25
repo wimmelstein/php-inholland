@@ -7,6 +7,8 @@ $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 $allowedFileTypes = array("jpg", "png", "jpeg", "gif");
 $errors = array();
 
+error_log("Something went wrong there");
+
 
 
 //Check if image file is a actual image or fake image and if the file has actually reached the server
@@ -33,14 +35,13 @@ if (!in_array($imageFileType, $allowedFileTypes)) {
     array_push($errors, "Only files of type JPG, JPEG, PNG or GIF are allowed.");
 }
 
-// Check if the upload went OK, otherwise print the errors
+// Check if the upload went OK, otherwise print the errors to the page
 if (count($errors) == 0) {
     move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file);
-    header('Location: /');  
+    header('Location: /index.php');  
 } else {
-    foreach ($errors as $error) {
-        echo $error, '<br>';
-    }
+    header('Location: /index.php?errors=' . join("-", $errors));
 }
+
 
 ?>

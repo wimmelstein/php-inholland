@@ -5,6 +5,6 @@
 
     unlink($basedir . $filename);
 
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    header('Location: /index.php');
 
 ?>
