@@ -7,10 +7,6 @@ $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 $allowedFileTypes = array("jpg", "png", "jpeg", "gif");
 $errors = array();
 
-error_log("Something went wrong there");
-
-
-
 //Check if image file is a actual image or fake image and if the file has actually reached the server
 if (isset($_POST) && isset($_FILES['file'])) {
     $check = getimagesize($_FILES['fileToUpload']['tmp_name']) or die('bla');
@@ -22,7 +18,7 @@ if (isset($_POST) && isset($_FILES['file'])) {
 
 //Check if file already exists
 if (file_exists($target_file)) {
-    array_push($errors, "File already exists.");;
+    array_push($errors, "File already exists.");
 }
 
 // Check file size
