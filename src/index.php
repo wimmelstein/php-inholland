@@ -18,7 +18,7 @@
 
 require_once('model/mypdf.php');
 require_once('model/user.php');
-require_once('lib/phpqrcode.php');
+require_once('../lib/phpqrcode.php');
 
 $output = 'output/';
 
