@@ -8,26 +8,25 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-
 <body>
     <div class="wrapper">
     <form action="index.php" method="post">
         <button type="submit" name="generate" class="button btn btn-primary">Generate PDF</button>
     </form>
-</body>
-
-</html>
 
 <?php
 
-require 'model/mypdf.php';
-require 'model/user.php';
-require 'lib/phpqrcode.php';
+require_once('model/mypdf.php');
+require_once('model/user.php');
+require_once('lib/phpqrcode.php');
 
 $output = 'output/';
 
 if (isset($_GET['filename'])) {
-    unlink($output . $_GET['filename']);
+    $fileToDelete = $output . $_GET['filename'];
+    if (file_exists($fileToDelete)) { 
+        unlink($fileToDelete);
+    }
 }
 
 if (isset($_POST['generate'])) {
@@ -82,3 +81,5 @@ if (isset($_POST['generate'])) {
     <?php
 }
 ?>
+</body>
+</html>
