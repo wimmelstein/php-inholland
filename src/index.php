@@ -14,7 +14,6 @@
     <form action="index.php" method="post">
         <button type="submit" name="generate" class="button btn btn-primary">Generate PDF</button>
     </form>
-    <div id="message"></div>
 </body>
 
 </html>
@@ -25,8 +24,14 @@ require 'model/mypdf.php';
 require 'model/user.php';
 require 'lib/phpqrcode.php';
 
+$output = 'output/';
+
+if (isset($_GET['filename'])) {
+    unlink($output . $_GET['filename']);
+}
+
 if (isset($_POST['generate'])) {
-    $user = new User(null, 'Wim', 'Wiltenburg', 51);
+    $user = new User(null, 'Wim', 'Wiltenburg', 52);
 
     $pdf = new PDF();
     $pdf->AliasNbPages();
@@ -58,22 +63,22 @@ if (isset($_POST['generate'])) {
 
     $pdf->Ln();
 
-    $filename = 'output/' . str_replace(' ', '_', $user->getUserName()) . '.png';
+    $filename = 'output/' . $user->getUserName() . '.png';
 
-    QRcode::png(md5($user->getUserName()), $filename, 'L', 4, 2);
-
+    //QRcode::png(md5($user->getUserName()), $filename, 'L', 4, 2);
+    QRcode::png('<a href="https://wiltenburgit.nl">Wiltenburg IT</a>', $filename, 'L', 4, 2);
     $pdf->Image($filename);
 
-    $pdf->Output('F', 'output/ticket_' . $user->getUserName() . '.pdf');
+    $pdfname = 'ticket_' . $user->getUserName() . '.pdf';
+    $pdf->Output('F', $output . $pdfname);
 
     // Remove image for privacy reasons
     unlink($filename);
-
-    //echo "PDF created in output folder";
-
-    echo <<<END
-    <script type="text/javascript" src="js/script.js"></script>
-END;
-
+    
+    ?>
+    <div id="message">
+        <a href="http://localhost?filename=<?php echo $pdfname ?>">PDF stored as <?php echo $output . $pdfname ?></a>
+    </div>
+    <?php
 }
 ?>
