@@ -1,7 +1,5 @@
 <?php
 
-require_once('../util/db.php');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,55 +20,11 @@ require_once('../util/db.php');
 <body>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4">Payment</h1>
+      <h1 class="display-4">Jack's Guitarshop</h1>
       <p>Demonstration of Mollie Payment</p>
     </div>
   </div>
 
- <p>Thank you for shopping at Jack's Guitarshop Have a nice day!</p>
-
- <table class="table table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">status</th>
-        <th scope="col">timestamp</th>
-      </tr>
-    </thead>
-    <tbody>
-
-<?php 
-
-    $query = ("select * from payment");
-    $conn = OpenCon();
-    $result = $conn->query($query);
-
-    CloseCon($conn);
-    if ($result->num_rows > 0) {
-
-        while($row = mysqli_fetch_assoc($result)) {
-
-         ?>
-            <tr>
-                <td>
-                <?php echo $row['id']; ?>
-                </td>
-                <td>
-                <?php echo $row['status']; ?>
-                </td>
-                <td>
-                <?php echo $row['timestamp']; ?>
-                </td>
-            </tr>
-        <?php 
-            } 
-        } else {
-          echo 'no rows selected';
-        }
-        ?>
-
-   </tbody>
-   </table>
-
+ <p>Thank you for shopping at Jack's Guitarshop Have a nice day! Show <a href="payments.php">logs</a> or go <a href="http://jacksguitarshop.com">back</a> to the shop</p>
 </body>
 </html>

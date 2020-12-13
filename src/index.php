@@ -19,15 +19,15 @@
 <body>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4">Payment</h1>
-      <p>Jack's Guitarshop Payment</p>
+      <h1 class="display-4">Jack's Guitarshop</h1>
+      <p>Checkout</p>
     </div>
   </div>
 
   <form class="form-inline" method="post" action="pay.php">
     <div class="row">
       <div class="col">
-        <input type="text" class="form-control" id="amount" name="amount" placeholder="Amount" pattern="^\d+\.\d{2}$" required>
+        <input type="text" title="Format ###.##" class="form-control" id="amount" name="amount" placeholder="Amount" pattern="^\d+\.\d{2}$" required>
       </div>
       <div class=" col">
         <input type="text" class="form-control" placeholder="Description" id="description" name="description" required>

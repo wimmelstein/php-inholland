@@ -23,6 +23,7 @@ DROP TABLE IF EXISTS `payment`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payment` (
   `id` varchar(25) DEFAULT NULL,
+  `description` varchar(40) DEFAULT NULL,
   `status` varchar(25) DEFAULT NULL,
   `timestamp` timestamp DEFAULT now()
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
