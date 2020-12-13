@@ -27,7 +27,7 @@ require('db.php');
     </div>
   </div>
 
- <p>Thank you for shopping at Otter ICT. Have a nice day!</p>
+ <p>Thank you for shopping at Jack's Guitarshop Have a nice day!</p>
 
  <table class="table table-hover">
     <thead class="thead-dark">
