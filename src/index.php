@@ -20,7 +20,7 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4">Payment</h1>
-      <p>Demonstration of Mollie Payment</p>
+      <p>Jack's Guitarshop Payment</p>
     </div>
   </div>
 

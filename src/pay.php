@@ -14,8 +14,8 @@ $payment = $mollie->payments->create([
     "value" => "$amount"
   ],
   "description" => "$description",
-  "redirectUrl" => "https://wiltenburg.eu",
-  "webhookUrl"  => "https://wiltenburg.eu/confirm.php",
+  "redirectUrl" => "http://jacksguitarshop.com/server",
+  "webhookUrl"  => "http://jacksguitarshop.com/server/confirm.php",
 ]);
 
 

@@ -1,6 +1,6 @@
 <?php
 
-require('db.php');
+require_once('../util/db.php');
 
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ require('db.php');
 
 <?php 
 
-    $query = ("select * from payments");
+    $query = ("select * from payment");
     $conn = OpenCon();
     $result = $conn->query($query);
 
@@ -59,11 +59,13 @@ require('db.php');
                 <?php echo $row['status']; ?>
                 </td>
                 <td>
-                <?php echo $row['payment_date']; ?>
+                <?php echo $row['timestamp']; ?>
                 </td>
             </tr>
         <?php 
             } 
+        } else {
+          echo 'no rows selected';
         }
         ?>
 
