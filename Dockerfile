@@ -1,18 +1,23 @@
 FROM php:7.2-apache
 
 # Apache conf
-# allow .htaccess with RewriteEngine
+# allow .htaccess with RewriteEngine/
 RUN a2enmod rewrite
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+RUN a2enmod ssl
+
+COPY ./apache/apache2.conf /etc/apache2/
+COPY ./apache/jacksguitarshop.com.conf /etc/apache2/sites-available/
+
+RUN a2ensite jacksguitarshop.com.conf
+RUN mkdir /var/tmp/certs
+
+COPY ./certs/* /var/tmp/certs/
 
 RUN apt-get update && \
     apt-get install -y \
-    zlib1g-dev libpng-dev git zip
+    zlib1g-dev libpng-dev git zip net-tools
 
 RUN docker-php-ext-install mysqli 
-RUN docker-php-ext-install gd
-
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer require mollie/mollie-api-php:^2.0

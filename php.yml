@@ -21,7 +21,7 @@ services:
       - php  
 
   server:
-       image: wimmelsoft/php-mysqli:0.2
+       image: wimmelsoft/php-mysqli:0.4
        depends_on:
          - db
        deploy:
@@ -39,9 +39,11 @@ services:
           - ./mollie/:/var/www/mollie
 
   adminer:
-     image: adminer
+     image: phpmyadmin:latest
      ports:
-       - 8080:8080
+       - 8080:80
+     environment:
+      PMA_HOST: db  
      networks:
        - php  
    

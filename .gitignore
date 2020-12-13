@@ -1,3 +1,4 @@
 /mollie/lock
 /mollie/log
 /mollie/run
+/certs/**
