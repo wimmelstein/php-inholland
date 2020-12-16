@@ -17,7 +17,4 @@ RUN apt-get update && \
     apt-get install -y \
     zlib1g-dev libpng-dev git zip net-tools
 
-RUN docker-php-ext-install mysqli 
-
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN composer require mollie/mollie-api-php:^2.0
+RUN docker-php-ext-install mysqli

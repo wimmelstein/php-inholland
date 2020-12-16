@@ -2,3 +2,4 @@
 /mollie/log
 /mollie/run
 /certs/**
+/server/*.log
