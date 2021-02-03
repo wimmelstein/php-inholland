@@ -1,38 +1,35 @@
 <?php
 
-include __DIR__ . '/../util/db.php';
+require_once('../util/db.php');
 
- function getUsers() {
+class UserService
+{
+        
+    function __construct() {
+        
+        $db = new DB();
+        $this->conn = $db->OpenCon();
+    }
 
-    $conn = OpenCon();
+    function getUsers()
+    {
+        $result = $this->conn->query("select * from users");
+        return $result;
+    }
 
-    $result = $conn->query("select * from users");
+    function persistUser($first_name, $last_name, $age)
+    {
+        $stmt = $this->conn->prepare("INSERT INTO users  (first_name, last_name, age) VALUES (?, ?, ?)");
+        $stmt->bind_param('ssi', $first_name, $last_name, $age);
+        $stmt->execute();
+    }
+
+    function deleteUser($id)
+    {
     
-    return $result;
-    
-    CloseCon($conn);
-}
-
-function persistUser($first_name, $last_name, $age) {
-    $conn = OpenCon();
-
-    $stmt = $conn->prepare("INSERT INTO users  (first_name, last_name, age) VALUES (?, ?, ?)");
-    $stmt->bind_param('ssi', $first_name, $last_name, $age);
-
-    $stmt->execute();
-    
-    CloseCon($conn);
+        $stmt = $this->conn->prepare("DELETE FROM users where id=?");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+    }
 
 }
-
-function deleteUser($id) {
-    $conn = OpenCon();
-
-    $stmt = $conn->prepare("DELETE FROM users where id=?");
-    $stmt->bind_param('i', $id);
-
-    $stmt->execute();
-
-    CloseCon($conn);
-}
-?>

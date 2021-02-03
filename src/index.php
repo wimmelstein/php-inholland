@@ -53,7 +53,7 @@ include ('model/user.php');
 include ('controller/UserController.php');
 
 
-    $result = getAllUsers();
+    $result = 
     if ($result->num_rows > 0) {
 
         while($row = $result->fetch_assoc()) {
