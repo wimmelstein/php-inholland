@@ -37,8 +37,8 @@ services:
        volumes:
           - ./src:/var/www/html
 
-  adminer:
-     image: adminer
+  phpmyadmin:
+     image: phpmyadmin:latest
      deploy:
       restart_policy: 
         condition: on-failure
@@ -46,7 +46,9 @@ services:
         max_attempts: 3
         window: 120s    
      ports:
-       - 8080:8080
+       - 8080:80
+     environment:
+       PMA_HOST: db    
      networks:
        - php  
    
