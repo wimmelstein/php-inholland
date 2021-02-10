@@ -69,7 +69,6 @@
       </div>
   </form>
 
-  <div id="messages">
 
     <?php
 
@@ -77,7 +76,11 @@
     $params = array();
     parse_str($_SERVER['QUERY_STRING'], $params);
     if (count($params) > 0) {
-      echo join("", $params);
+      ?> 
+      <div class="messages-error">
+      <?php echo join("", $params); ?>
+      </div>
+      <?php
     } else {
       echo "";
     }
