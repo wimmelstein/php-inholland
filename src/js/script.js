@@ -18,9 +18,9 @@ function myPrompt() {
 
 function displayGuitars() {
     const guitarDisplay = document.getElementById('guitars');
-    const choice = prompt('Welke gitaar wil je zien');
+    const choice = prompt('Welke gitaar wil je zien (stratocaster/telecaster)');
 
-    let text = '<table class="my-table">';
+    let text = '<table class="table">';
     const chosenGuitars = guitars.filter(e => e.model === choice);
     console.log(chosenGuitars);
     chosenGuitars.forEach(guitar => {
