@@ -5,3 +5,5 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
  
 RewriteRule ^.*$ ./index.php
+
+# php_value  upload_max_filesize  10M
