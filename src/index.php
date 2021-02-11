@@ -65,7 +65,7 @@
         <input type="file" class="form-control-file" name="fileToUpload"  id="fileToUpload">
       </div>
       <div class="col">
-        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="submit" class="btn btn-primary" id="submit" name="submit">Upload</button>
       </div>
   </form>
 
