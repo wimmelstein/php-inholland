@@ -2,14 +2,19 @@
 
 // Set variables
 $target_dir = './workdir/';
-$baseFile = $_FILES['fileToUpload'];
+
+$baseFile = $_FILES['upload'];
 $uploadFile = $baseFile['name'];
 $tmpFile = $baseFile['tmp_name'];
 $fileSize = $baseFile['size'];
+
 $target_file = $target_dir . basename($uploadFile);
+
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
 $allowedFileTypes = array("jpg", "png", "jpeg", "gif");
 $errors = array();
+
 
 if (isset($_POST['submit'])) {
 
@@ -17,7 +22,6 @@ if (isset($_POST['submit'])) {
     if (!(isImage($tmpFile))) {
         array_push($errors, 'File is not an image.');
     }
-
 
     //Check if file already exists
     if (file_exists($target_file)) {
@@ -39,7 +43,12 @@ if (isset($_POST['submit'])) {
         move_uploaded_file($tmpFile, $target_file);
         header('Location: /index.php');  
     } else {
-        header('Location: /index.php?errors=' . join("-", $errors));
+        $outputFile = fopen('errors.txt', 'w');
+        foreach ($errors as $value) {
+            fwrite($outputFile, $value . PHP_EOL);
+        }
+        fclose($outputFile);
+        header('Location: /index.php');
     }
 }
 

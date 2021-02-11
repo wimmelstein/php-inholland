@@ -60,32 +60,28 @@
   </table>
 
   <form name="upload" method="post" action="upload.php" enctype="multipart/form-data">
-    <div class="form-row">
-      <div class="col">
-        <input type="file" class="form-control-file" name="fileToUpload"  id="fileToUpload">
-      </div>
-      <div class="col">
-        <button type="submit" class="btn btn-primary" id="submit" name="submit">Upload</button>
+      <div class="form-row">
+          <div class="col">
+              <input type="file" class="form-control-file" name="upload" id="upload">
+          </div>
+          <div class="col">
+              <button type="submit" class="btn btn-primary" id="submit" name="submit">Upload</button>
+          </div>
       </div>
   </form>
 
+  <div class="messages-error">
 
-    <?php
-
-    // Print error messages to the screen
-    $params = array();
-    parse_str($_SERVER['QUERY_STRING'], $params);
-    if (count($params) > 0) {
-      ?> 
-      <div class="messages-error">
-      <?php echo join("", $params); ?>
-      </div>
       <?php
-    } else {
-      echo "";
-    }
-    
-    ?>
+      if (file_exists('errors.txt')) {
+          echo 'The following errors were encountered:<br>';
+          $errorFile = fopen('errors.txt', 'r');
+          while (($line = fgets($errorFile)) !== false) {
+              echo nl2br($line);
+          }
+          unlink('errors.txt');
+      }
+      ?>
   </div>
 
 
