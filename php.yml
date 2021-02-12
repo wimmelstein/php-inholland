@@ -21,7 +21,7 @@ services:
       - php  
 
   server:
-       image: wimmelsoft/php-mysqli:0.2
+    image: wimmelsoft/php-mysqli:0.5
        depends_on:
          - db
        deploy:

@@ -1,33 +1,31 @@
 <?php
 
-require_once('../service/UserService.php');
+require_once(__DIR__ . '/../service/UserService.php');
 
-class UserController {
+class UserController
+{
 
-    function __construct() {
-        userService = new UserService();
+    function __construct()
+    {
+        $this->userService = new UserService();
     }
 
-function process() {
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $age = $_POST['age'];
+    public function post(\http\Env\Request $request)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $first_name = $_POST['first_name'];
+            $last_name = $_POST['last_name'];
+            $age = $_POST['age'];
 
-    $this->userService->persistUser($first_name, $last_name, $age);
-    header('Location: ' . "..");
-} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    $url = $_SERVER['REQUEST_URI'];
-    $parts = parse_url($url);
-    parse_str($parts['query'], $query);
-    $id = $query['id']; 
-    echo "Id is: " . $id;
-    userService->deleteUser($id);
-    header('Location: ' . "..");
-} else {
-    return $userService->getUsers();
-}
-}
+            $this->userService->persistUser($first_name, $last_name, $age);
+            header('Location: ' . "..");
+        }
+    }
+
+    public function getAllUsers()
+    {
+        return $this->userService->getUsers();
+    }
 }
 
 

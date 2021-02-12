@@ -1,6 +1,6 @@
 <?php
 
-require_once('../util/db.php');
+require_once(__DIR__ . '/../util/db.php');
 
 class UserService
 {
