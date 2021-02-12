@@ -17,6 +17,12 @@ class Router
     }
 
 
+    /**
+     * @param $path
+     * @param $callback
+     *
+     * TODO: path starts with 'api' then call different routes
+     */
     public function get($path, $callback)
     {
         $this->routes['get'][$path] = $callback;
