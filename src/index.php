@@ -10,9 +10,6 @@ $app->router->get('/', function () {
     return 'Hello World!';
 });
 
-$app->router->get('/users', function () {
-    return 'Users';
-});
-
+$app->router->get('/users', 'Userview');
 
 $app->run();
