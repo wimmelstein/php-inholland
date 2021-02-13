@@ -12,7 +12,7 @@ echo new Jumbotron($title, $subTitle);
 
 $controller = new UserController();
 $users = $controller->getAllUsers();
-$table = new Table(['Id', 'First Name', 'Last Name'], $users);
+$table = new Table(['Id', 'First Name', 'Last Name', 'Age'], $users);
 $table->renderTable();
 
 ?>
