@@ -21,5 +21,6 @@ class User {
     public function getAge() {
         return $this->age;
     }
+
 }
 ?>    
