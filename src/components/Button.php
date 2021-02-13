@@ -21,7 +21,7 @@ class Button
 
     public function render()
     {
-        echo sprintf('<button %s class"%s">%s</button>', $this->action, $this->class, $this->value);
+        echo sprintf('<button %s class="%s">%s</button>', $this->action, $this->class, $this->value);
     }
 
 }

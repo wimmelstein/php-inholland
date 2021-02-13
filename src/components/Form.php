@@ -21,10 +21,12 @@ class Form
     {
         echo '<form>';
         $text = '';
-        foreach ($this->inputs as $key => $value) {
-            $text .= "$key=$value ";
+        foreach ($this->inputs as $input) {
+            foreach ($input as $key => $value) {
+                $text .= "$key=$value ";
+            }
+            echo "<input $text />";
         }
-        echo "<input $text />";
         echo $this->button->render();
 
     }
