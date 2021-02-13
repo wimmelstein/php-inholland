@@ -14,17 +14,14 @@ class UserController
         $this->userService = new UserService();
     }
 
-    public function post($path, $callback)
+    public function addUser()
     {
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $age = $_POST['age'];
 
-//        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//            $first_name = $_POST['first_name'];
-//            $last_name = $_POST['last_name'];
-//            $age = $_POST['age'];
-//
-//            $this->userService->persistUser($first_name, $last_name, $age);
-//            header('Location: ' . "..");
-//        }
+        $this->userService->persistUser($first_name, $last_name, $age);
+        return $this->render();
     }
 
     public function render()

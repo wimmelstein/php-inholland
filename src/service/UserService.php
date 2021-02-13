@@ -30,13 +30,12 @@ class UserService
         $stmt->execute();
     }
 
-    function deleteUser($id)
-    {
-
-        $stmt = $this->conn->prepare("DELETE FROM users where id=?");
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-    }
+//    function deleteUser($id)
+//    {
+//        $stmt = $this->conn->prepare("DELETE FROM users where id=?");
+//        $stmt->bind_param('i', $id);
+//        $stmt->execute();
+//    }
 
     function getUser($id)
     {
@@ -46,7 +45,7 @@ class UserService
         $stmt->execute();
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
-        return $user;
+        return $user ?? [];
     }
 
 }

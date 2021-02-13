@@ -10,6 +10,8 @@ class Table
      * Table constructor.
      * @param array $tableHeaders
      */
+
+    //TODO: create column for actions...
     public function __construct($tableHeaders, $data)
     {
         $this->tableHeaders = $tableHeaders;

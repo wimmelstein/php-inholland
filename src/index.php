@@ -7,8 +7,6 @@ use app\core\Application;
 
 $app = new Application(__DIR__);
 
-require_once('controller/UserController.php');
-
 $app->router->get('/', 'home');
 $app->router->get('/files', 'files');
 $app->router->get('/users', [UserController::class, 'render']);
