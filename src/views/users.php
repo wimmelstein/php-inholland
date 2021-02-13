@@ -1,76 +1,26 @@
 <?php
 
-require_once(__DIR__ . '/../layout/Jumbotron.php');
+use app\core\Application;
+
+include_once(Application::$ROOT_DIR . '/model/user.php');
+include_once(Application::$ROOT_DIR . '/components/Table.php');
+include_once(Application::$ROOT_DIR . '/controller/UserController.php');
+
+
+$controller = new UserController();
+$users = $controller->getAllUsers();
+$table = new Table(['Id', 'First Name', 'Last Name'], $users);
+$table->renderTable();
+
 ?>
 
-<html>
-<head>
-    <title>Users</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="Cache-control" content="no-cache"/>
-</head>
 
-<body>
-
-<?php echo new Jumbotron("Users", "Model-View-Controller-Service pattern for users"); ?>
-
-<table id="example" class="table table-hover" style="width:100%">
-
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Naam</th>
-        <th>Age</th>
-        <th>
-    </tr>
-    </thead>
-
-    <tbody>
-
-    <?php
-
-    include('model/user.php');
-
-    include('controller/UserController.php');
-
-
-    $controller = new UserController();
-    $result = $controller->getAllUsers();
-    if ($result->num_rows > 0) {
-
-        while ($row = $result->fetch_assoc()) {
-
-            ?>
-            <tr>
-                <td><?php echo $row['id'] ?></td>
-                <td><?php echo $row["first_name"] . " " . $row["last_name"] ?></td>
-                <td><?php echo $row["age"] ?>
-                <td>
-                    <form method="delete" action="controller/UserController.php?id=<?php echo $row['id'] ?>">
-                        <button type="submit" class="btn btn-secondary">Delete</button>
-                    </form>
-                </td>
-            </tr>
-
-            <?php
-        }
-    }
-
-    echo "</tbody>";
-    echo "</table>";
-
-    ?>
-
-    <form method="post" action="/users/">
-        <div class="row">
-            <div class="col">
-                <input type="text" class="form-control" placeholder="First name" name="first_name" required autofocus>
-            </div>
-            <div class="col">
+<form method="post" action="/users/">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" placeholder="First name" name="first_name" required autofocus>
+        </div>
+        <div class="col">
                 <input type="text" class="form-control" placeholder="Last name" name="last_name" required>
             </div>
             <div class="col">
@@ -80,7 +30,4 @@ require_once(__DIR__ . '/../layout/Jumbotron.php');
         </div>
     </form>
 
-
-</body>
-</html>
 

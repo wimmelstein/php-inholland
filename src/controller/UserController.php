@@ -1,6 +1,8 @@
 <?php
 
-require_once(__DIR__ . '/../service/UserService.php');
+use app\core\Application;
+
+require_once(Application::$ROOT_DIR . "/service/UserService.php");
 
 class UserController
 {
