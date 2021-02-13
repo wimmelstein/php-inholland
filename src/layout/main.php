@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="Cache-control" content="no-cache"/>
+    <script src="../script.js"></script>
 </head>
 <body>
 

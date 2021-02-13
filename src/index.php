@@ -11,5 +11,6 @@ $app->router->get('/', 'home');
 $app->router->get('/files', 'files');
 $app->router->get('/users', [UserController::class, 'render']);
 $app->router->post('/users', [UserController::class, 'addUser']);
+$app->router->get('/test', 'test');
 
 $app->run();
