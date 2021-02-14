@@ -4,5 +4,5 @@ function deleteUser(id) {
 }
 
 function addUser() {
-    window.location.href = '/users/add';
+    window.location = '/users/add';
 }

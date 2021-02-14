@@ -8,6 +8,7 @@ include_once(Application::$ROOT_DIR . '/components/Jumbotron.php');
 include_once(Application::$ROOT_DIR . '/components/Table.php');
 include_once(Application::$ROOT_DIR . '/components/Button.php');
 include_once(Application::$ROOT_DIR . '/components/Form.php');
+include_once(Application::$ROOT_DIR . '/components/Link.php');
 include_once(Application::$ROOT_DIR . '/controller/UserController.php');
 
 echo new Jumbotron($title, $subTitle);
@@ -23,10 +24,9 @@ $table = new Table(['Id', 'First Name', 'Last Name', 'Age'],
 );
 $table->renderTable();
 
-$button = new Button("Add...", 'onClick="addUser()"', "btn btn-primary");
-$button->render("");
+echo new Link('/users/add', 'Add user', '');
 
-?>
+
 
 
 
