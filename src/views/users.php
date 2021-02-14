@@ -15,21 +15,16 @@ echo new Jumbotron($title, $subTitle);
 $controller = new UserController();
 $users = $controller->getAllUsers();
 
-//TODO: pass $row['id'] to the fragment. Is 1 for the time being, and that works. $row not available in the button class
-$fragment = <<<EOF
-1
-EOF;
-
 $table = new Table(['Id', 'First Name', 'Last Name', 'Age'],
     $users,
     new Form([],
-        new Button("Delete", "onClick='deleteUser(" . $fragment . ")'", "btn btn-secondary")
+        new Button("Delete", "onClick='deleteUser(this.id)'", "btn btn-secondary")
     )
 );
 $table->renderTable();
 
 $button = new Button("Add...", 'onClick="addUser()"', "btn btn-primary");
-$button->render();
+$button->render("");
 
 ?>
 

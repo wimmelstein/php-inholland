@@ -17,7 +17,7 @@ class Form
         $this->button = $button;
     }
 
-    public function render()
+    public function render($id)
     {
         echo '<form>';
         $text = '';
@@ -27,7 +27,7 @@ class Form
             }
             echo "<input $text />";
         }
-        echo $this->button->render();
+        echo $this->button->render($id);
 
     }
 

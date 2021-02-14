@@ -40,7 +40,7 @@ class Table
             }
             if ($this->form) {
                 echo "<td>";
-                $this->form->render();
+                $this->form->render($row['id']);
                 echo "</td>";
             }
             echo '</tr>';

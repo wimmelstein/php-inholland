@@ -1,4 +1,5 @@
 function deleteUser(id) {
+    console.log(id);
     alert(`Deleting id ... ${id}`);
 }
 
