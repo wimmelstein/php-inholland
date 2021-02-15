@@ -11,7 +11,9 @@ include_once(Application::$ROOT_DIR . '/components/Form.php');
 include_once(Application::$ROOT_DIR . '/components/Link.php');
 include_once(Application::$ROOT_DIR . '/controller/UserController.php');
 
+Application::injectScript("/js/users.js");
 echo new Jumbotron($title, $subTitle);
+
 
 $controller = new UserController();
 $users = $controller->getAllUsers();
@@ -24,7 +26,7 @@ $table = new Table(['Id', 'First Name', 'Last Name', 'Age'],
 );
 $table->renderTable();
 
-$button = new Button("Add...", "onClick=addUser()", "btn btn-primary");
+$button = new Button("Add...", "", "btn btn-primary");
 $button->render("add");
 
 

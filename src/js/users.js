@@ -1,5 +1,11 @@
-function addUser() {
-    const button = document.getElementById('add');
-    button.onclick = () => window.location.replace('/users/add');
-}
+window.addEventListener('DOMContentLoaded', function () {
+    const button = document.getElementById("add");
+    button.onclick = (e) => {
+        e.preventDefault();
+        window.location.replace('/users/add');
+    }
+})
 
+function deleteUser($id) {
+    console.log($id);
+}
