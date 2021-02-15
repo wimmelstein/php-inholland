@@ -27,6 +27,11 @@ class Application
         $this->userController = new UserController();
     }
 
+    public static function injectScript($scriptName)
+    {
+        echo "<script src=\"$scriptName\"></script>";
+    }
+
     public function run()
     {
         echo $this->router->resolve();
