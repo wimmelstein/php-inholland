@@ -32,6 +32,13 @@ class Router
     public function post($path, $callback)
     {
         $this->routes['post'][$path] = $callback;
+
+    }
+
+
+    public function delete($path, $callback)
+    {
+        $this->routes['delete'][$path] = $callback;
     }
 
 

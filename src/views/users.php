@@ -24,7 +24,8 @@ $table = new Table(['Id', 'First Name', 'Last Name', 'Age'],
 );
 $table->renderTable();
 
-echo new Link('/users/add', 'Add user', '');
+$button = new Button("Add...", "onClick=addUser()", "btn btn-primary");
+$button->render("add");
 
 
 
