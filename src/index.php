@@ -61,16 +61,21 @@ include ('controller/UserController.php');
         ?>
           <tr>
             <td><?php echo $row['id']?></td>
-            <td><?php echo $row["first_name"] . " " . $row["last_name"]?></td>
-            <td><?php echo $row["age"]?>
-            <td>
-              <form method="delete" action="controller/UserController.php?id=<?php echo $row['id']?>">
-              <button type="submit" class="btn btn-secondary">Delete</button>
-              </form>
-            </td>
+              <td><?php echo $row["first_name"] . " " . $row["last_name"] ?></td>
+              <td><?php echo $row["age"] ?>
+              <td>
+                  <form method="delete" action="controller/UserController.php?id=<?php echo $row['id'] ?>">
+                      <button type="submit" class="btn btn-secondary">Delete</button>
+                  </form>
+              </td>
           </tr>
 
-        <?php
+            <?php
+
+            foreach ($_SERVER as $key => $value) {
+                echo "$key -> $value<br>";
+            }
+            exit;
         }
     }
 
