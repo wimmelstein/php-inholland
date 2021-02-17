@@ -1,6 +1,5 @@
 <?php
 
-use app\controller\UserController;
 use app\core\Application;
 
 include_once(Application::$ROOT_DIR . '/model/user.php');
@@ -13,9 +12,7 @@ include_once(Application::$ROOT_DIR . '/controller/UserController.php');
 
 Application::injectScript("/js/users.js");
 echo new Jumbotron($title, $subTitle);
-
-
-$controller = new UserController();
+$controller = Application::$app->userController;
 $users = $controller->getAllUsers();
 
 $table = new Table(['Id', 'First Name', 'Last Name', 'Age'],

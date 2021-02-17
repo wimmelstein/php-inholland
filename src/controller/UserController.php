@@ -24,9 +24,13 @@ class UserController
         return $this->render();
     }
 
-    public function render()
+    public function getUser()
     {
 
+    }
+
+    public function render()
+    {
         if (!empty($_GET['id'])) {
             $id = intval($_GET['id']);
             $user = Application::$app->userController->userService->getUser($id);

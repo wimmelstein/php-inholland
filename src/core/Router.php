@@ -5,11 +5,17 @@ class Router
 {
 
     public Request $request;
+    public Response $response;
     protected array $routes = [];
+    /**
+     * @var Response
+     */
+
 
     /**
      * Router constructor.
      * @param Request $request
+     * @param Response $response
      */
     public function __construct(Request $request, Response $response)
     {
@@ -44,8 +50,16 @@ class Router
 
     public function resolve()
     {
-        $path = $this->request->getPath();
+        $path = explode('/', $this->request->getPath());
         $method = $this->request->getMethod();
+
+        if (sizeof($path) > 2) {
+            if (is_numeric(end($path))) {
+                $this->resolveResource($path);
+            }
+        }
+        $path = implode("/", $path);
+
         $callback = $this->routes[$method][$path] ?? false;
         if ($callback === false) {
             $this->response->setStatus(404);
@@ -59,7 +73,7 @@ class Router
             $callback[0] = new $callback[0]();
         }
 
-        return call_user_func($callback);
+        return call_user_func($callback, $this->request, $this->response);
 
     }
 
@@ -92,5 +106,14 @@ class Router
     {
         $layoutContent = $this->layoutContent();
         return str_replace('{{content}}', $viewContent, $layoutContent);
+    }
+
+    private function resolveResource($path)
+    {
+        echo '<pre>';
+        var_dump($path);
+        echo '</pre>';
+        exit;
+
     }
 }
