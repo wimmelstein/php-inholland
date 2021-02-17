@@ -53,8 +53,8 @@ class Router
         $path = explode('/', $this->request->getPath());
         $method = $this->request->getMethod();
 
-        if (sizeof($path) > 2) {
-            if (is_numeric(end($path))) {
+        foreach ($path as $value) {
+            if (is_numeric($value)) {
                 $this->resolveResource($path);
             }
         }
