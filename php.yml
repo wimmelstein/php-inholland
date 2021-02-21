@@ -21,31 +21,37 @@ services:
       - php  
 
   server:
-       image: wimmelsoft/php-mysqli:0.3
-       build: .
-       depends_on:
-         - db
-       deploy:
-         restart_policy:
-           condition: on-failure
-           delay: 5s
-           max_attempts: 3
-           window: 120s    
-       ports:
-         - 80:80
-       networks:
-          - php
-       volumes:
-          - ./src:/var/www/html
+    image: wimmelsoft/php-mysqli:0.5
+    depends_on:
+      - db
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - 80:80
+    networks:
+      - php
+    volumes:
+      - ./src:/var/www/html
 
-  adminer:
-     image: adminer
-     restart: always
-     ports:
-       - 8080:8080
-     networks:
-       - php  
-   
+  phpmyadmin:
+    image: phpmyadmin:latest
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    ports:
+      - 8080:80
+    environment:
+      PMA_HOST: db
+    networks:
+      - php
+
 networks:
   php:
     driver: overlay
