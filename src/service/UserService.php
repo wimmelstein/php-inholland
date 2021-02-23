@@ -3,48 +3,32 @@
 namespace app\service;
 
 use app\core\Application;
-use DB;
-
-require_once(Application::$ROOT_DIR . '/util/db.php');
 
 class UserService
 {
 
-    function __construct()
-    {
-
-        $db = new DB();
-        $this->conn = $db->OpenCon();
-    }
+    private static string $select_all_users = 'select * from users';
+    private static string $insert_user = 'INSERT INTO users  (first_name, last_name, age) VALUES (:first_name, :last_name, :age)';
+    private static string $select_one_user = 'SELECT * FROM users where id=?';
 
     function getUsers()
     {
-        $result = $this->conn->query("select * from users");
+        $result = Application::$app->pdo->query(self::$select_all_users);
         return $result;
     }
 
     function persistUser($first_name, $last_name, $age)
     {
-        $stmt = $this->conn->prepare("INSERT INTO users  (first_name, last_name, age) VALUES (?, ?, ?)");
-        $stmt->bind_param('ssi', $first_name, $last_name, $age);
-        $stmt->execute();
+        $stmt = Application::$app->pdo->prepare(self::$insert_user);
+        $stmt->execute(['first_name' => $first_name, 'last_name' => $last_name, 'age' => $age]);
     }
-
-//    function deleteUser($id)
-//    {
-//        $stmt = $this->conn->prepare("DELETE FROM users where id=?");
-//        $stmt->bind_param('i', $id);
-//        $stmt->execute();
-//    }
 
     function getUser($id)
     {
-
-        $stmt = $this->conn->prepare("SELECT * FROM users where id=?");
+        $stmt = Application::$app->pdo->prepare(self::$select_one_user);
         $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $user = $result->fetch_assoc();
+        $stmt->execute(['id' => $id]);
+        $user = $stmt->fetch();
         return $user ?? [];
     }
 

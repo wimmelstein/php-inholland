@@ -27,6 +27,7 @@ class UserController
     public function getUser()
     {
 
+        //TODO: Implement method
     }
 
     public function render()
