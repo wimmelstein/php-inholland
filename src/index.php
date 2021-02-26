@@ -11,7 +11,8 @@
 </head>
 <body>
 <div class="wrapper">
-    <form action="index.php" method="post">
+
+<form action="index.php" method="post">
         <button type="submit" name="generate" class="button btn btn-primary">Generate PDF</button>
     </form>
 
