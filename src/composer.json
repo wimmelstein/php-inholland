@@ -1,0 +1,6 @@
+{
+    "require": {
+        "fpdf/fpdf": "1.82.1",
+        "chillerlan/php-qrcode": "^4.3"
+    }
+}

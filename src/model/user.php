@@ -15,7 +15,7 @@ class User {
     }
 
     public function getUserName() {
-        return $this->first_name . " " . $this->last_name;
+        return $this->first_name . "_" . $this->last_name;
     }
 
     public function getAge() {

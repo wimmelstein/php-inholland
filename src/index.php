@@ -6,28 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Inholland -- PDF</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div class="wrapper">
+<div class="wrapper">
     <form action="index.php" method="post">
         <button type="submit" name="generate" class="button btn btn-primary">Generate PDF</button>
     </form>
 
-<?php
+    <?php
 
-require_once('model/mypdf.php');
-require_once('model/user.php');
-require_once('../lib/phpqrcode.php');
+    use app\model\PDF;
+    use chillerlan\QRCode\QRCode;
 
-$output = 'output/';
+    require_once __DIR__ . '/vendor/autoload.php';
+    require_once 'model/mypdf.php';
+    require_once('model/user.php');
 
-if (isset($_GET['filename'])) {
-    $fileToDelete = $output . $_GET['filename'];
-    if (file_exists($fileToDelete)) { 
-        unlink($fileToDelete);
+    $output = __DIR__ . "/output/";
+
+    if (isset($_GET['filename'])) {
+        $fileToDelete = $output . $_GET['filename'];
+        if (file_exists($fileToDelete)) {
+            unlink($fileToDelete);
+        }
     }
-}
 
 if (isset($_POST['generate'])) {
     $user = new User(null, 'Wim', 'Wiltenburg', 52);
@@ -62,10 +66,12 @@ if (isset($_POST['generate'])) {
 
     $pdf->Ln();
 
-    $filename = 'output/' . $user->getUserName() . '.png';
 
-    //QRcode::png(md5($user->getUserName()), $filename, 'L', 4, 2);
-    QRcode::png('<a href="https://wiltenburgit.nl">Wiltenburg IT</a>', $filename, 'L', 4, 2);
+    $filename = $output . $user->getUserName() . '.png';
+
+
+    $qrcode = new QRCode();
+    $qrcode->render('<a href="https://wiltenburgit.nl">Wiltenburg IT</a>', $filename);
     $pdf->Image($filename);
 
     $pdfname = 'ticket_' . $user->getUserName() . '.pdf';
@@ -73,7 +79,7 @@ if (isset($_POST['generate'])) {
 
     // Remove image for privacy reasons
     unlink($filename);
-    
+
     ?>
     <div id="message">
         <a href="http://localhost?filename=<?php echo $pdfname ?>">PDF stored as <?php echo $output . $pdfname ?></a>
