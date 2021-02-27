@@ -1,7 +1,7 @@
 <?php
 
-include_once 'Database\DatabaseConnection.php';
-include_once 'model\mypdf.php';
+include_once('Database/DatabaseConnection.php');
+include_once 'model/mypdf.php';
 
 use app\model\PDF;
 use chillerlan\QRCode\QRCode;
@@ -53,7 +53,7 @@ $filename = $outputUserName . '.png';
 
 $qrcode = new QRCode();
 
-$url = sprintf('<a href="http://wiltenburg.tech/checkin?id=%s">Checkin to the Code Fest</a>', $ticketId);
+$url = sprintf('<a href="http://wiltenburg.tech/checkin.php?id=%s">Checkin to the Code Fest</a>', $ticketId);
 $qrcode->render($url, $filename);
 $pdf->Image($filename);
 

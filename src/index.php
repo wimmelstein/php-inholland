@@ -79,7 +79,7 @@ if (isset($_GET['generatedTicket'])) {
             <td><?php echo $ticket['age'] ?></td>
             <td><?php echo $ticket['checkin'] == 0 ? 'No' : 'Yes' ?></td>
             <td>
-                <?php echo sprintf('<a href="generate_pdf.php?id=%s">Generate PDF</a>', $ticketId); ?>
+                <?php echo $ticket['checkin'] == 0 ? sprintf('<a href="generate_pdf.php?id=%s">Generate PDF</a>', $ticketId) : ''; ?>
             </td>
         </tr>
         <?php
