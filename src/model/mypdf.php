@@ -2,9 +2,9 @@
 
 namespace app\model;
 
-use Fpdf\Fpdf;
+require_once __DIR__ . '/vendor/autoload.php';
 
-require_once __DIR__ . '/../vendor/autoload.php';
+use Fpdf\Fpdf;
 
 
 class PDF extends FPDF {

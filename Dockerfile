@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:8.0-apache
 
 # Apache conf
 # allow .htaccess with RewriteEngine
@@ -8,7 +8,7 @@ RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/Allo
 
 RUN apt-get update && \
     apt-get install -y \
-    zlib1g-dev libpng-dev
+    zlib1g-dev libpng-dev libyaml-dev
 
-RUN docker-php-ext-install mysqli 
-RUN docker-php-ext-install gd
+RUN docker-php-ext-install mysqli pdo pdo_mysql gd
+RUN pecl install libyaml yaml

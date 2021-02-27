@@ -19,8 +19,13 @@ INSERT INTO `users` (`first_name`, `last_name`, `age`)
 VALUES ('Wim', 'Wiltenburg', 51),
        ('Jan', 'Jansen', 32);
 
+# noinspection SqlNoDataSourceInspection
+
 CREATE TABLE IF NOT EXISTS `tickets`
 (
     `id`      VARCHAR(100) NOT NULL,
-    `checkin` TINYINT
+    `user_id` int(11)      NOT NULL,
+    `checkin` TINYINT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
 )
