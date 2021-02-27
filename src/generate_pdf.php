@@ -58,6 +58,9 @@ $qrcode->render($url, $filename);
 $pdf->Image($filename);
 
 $pdfname = 'ticket_' . $outputUserName . '.pdf';
+if (file_exists($output . $pdfname)) {
+    unlink($output . $pdfname);
+}
 $pdf->Output('F', $output . $pdfname);
 
 // Remove image for privacy reasons

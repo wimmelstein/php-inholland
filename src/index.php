@@ -53,6 +53,9 @@ if (isset($_GET['generatedTicket'])) {
 }
 ?>
 <header>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="index.php">Home</a>
+    </nav>
     <div class="jumbotron  jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">PDF Generation</h1>
