@@ -11,12 +11,13 @@ body {
     top: 50%;
 }
 
-#message {
+.my-message {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: linen;
-    color: white;
+    color: red;
     text-align: center;
 }
+

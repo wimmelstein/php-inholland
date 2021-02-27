@@ -1,92 +1,92 @@
+<?php
+
+include_once('Database/DatabaseConnection.php');
+
+$pdo = DatabaseConnection::getInstance();
+
+$stmt = $pdo->query("select * from users");
+$users = $stmt->fetchAll();
+
+
+/*
+ * Fill the tickets
+ */
+foreach ($users as $user) {
+    $hash = hash('md5', $user['first_name']);
+    $stmt = $pdo->prepare("select user_id from tickets where user_id=:userid");
+    $stmt->execute(['userid' => $user['id']]);
+    if ($stmt->rowCount() == 0) {
+        $stmt = $pdo->prepare("insert into tickets (id, user_id, checkin) values (:id, :user_id, :checkin)");
+        $stmt->execute(['id' => $hash, 'user_id' => $user['id'], 'checkin' => 0]);
+    }
+    $stmt = $pdo->query("select * from tickets");
+    $tickets = $stmt->fetchAll();
+}
+
+$stmt = $pdo->query("select t.id, t.user_id, u.first_name, u.last_name, u.age, t.checkin from  users u, tickets t where u.id = t.user_id");
+$tickets = $stmt->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Inholland -- PDF</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PDF Generation</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
-<div class="wrapper">
 
-<form action="index.php" method="post">
-        <button type="submit" name="generate" class="button btn btn-primary">Generate PDF</button>
-    </form>
+<?php
 
-    <?php
-
-    use app\model\PDF;
-    use chillerlan\QRCode\QRCode;
-
-    require_once __DIR__ . '/vendor/autoload.php';
-    require_once 'model/mypdf.php';
-    require_once('model/user.php');
-
-    $output = __DIR__ . "/output/";
-
-    if (isset($_GET['filename'])) {
-        $fileToDelete = $output . $_GET['filename'];
-        if (file_exists($fileToDelete)) {
-            unlink($fileToDelete);
-        }
-    }
-
-if (isset($_POST['generate'])) {
-    $user = new User(null, 'Wim', 'Wiltenburg', 52);
-
-    $pdf = new PDF();
-    $pdf->AliasNbPages();
-    $pdf->AddPage();
-    $pdf->SetFont('Arial', '', 20);
-
-
-    $pdf->Cell(0, 10, 'Wimmelsoft CodeFest', 0, 1, 'C');
-
-
-    $pdf->SetFont('Arial', '', 12);
-
-    $pdf->Ln(30);
-
-    $pdf->Cell(0, 10, 'Dear ' . $user->getUserName(), 0, 1, 'L');
-
-    $pdf->Ln();
-
-    $pdf->Cell(0, 10, 'This ticket is to grant access to Wimmelsoft Codefest to: ', 0, 1, 'L');
-
-    $pdf->Ln();
-
-    $pdf->Cell(0, 10, 'First name: ' . $user->getFirstName(), 0, 1, 'L');
-    $pdf->Cell(0, 10, 'Last name: ' . $user->getLastName(), 0, 1, 'L');
-
-    $pdf->Ln();
-
-    $pdf->Cell(0, 10, 'Date: ' . date('d-m-Y'), 0, 1, 'L');
-
-    $pdf->Ln();
-
-
-    $filename = $output . $user->getUserName() . '.png';
-
-
-    $qrcode = new QRCode();
-    $qrcode->render('<a href="https://wiltenburgit.nl">Wiltenburg IT</a>', $filename);
-    $pdf->Image($filename);
-
-    $pdfname = 'ticket_' . $user->getUserName() . '.pdf';
-    $pdf->Output('F', $output . $pdfname);
-
-    // Remove image for privacy reasons
-    unlink($filename);
-
+if (isset($_GET['generatedTicket'])) {
     ?>
-    <div id="message">
-        <a href="http://localhost?filename=<?php echo $pdfname ?>">PDF stored as <?php echo $output . $pdfname ?></a>
+    <div class="my-message">
+        PDF created for ticket with id: <?php echo $_GET['generatedTicket']; ?>
     </div>
     <?php
 }
 ?>
+<header>
+    <div class="jumbotron  jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">PDF Generation</h1>
+        </div>
+    </div>
+</header>
+
+<table class="table" table-hover>
+    <thead>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Age</th>
+    <th>Checked in</th>
+    <th>Action</th>
+    </thead>
+    <tbody>
+    <?php
+    foreach ($tickets as $ticket) {
+        $ticketId = $ticket['id'];
+        ?>
+        <tr id="<?php echo $ticket['id']; ?>">
+            <td><?php echo $ticket['first_name'] ?></td>
+            <td><?php echo $ticket['last_name'] ?></td>
+            <td><?php echo $ticket['age'] ?></td>
+            <td><?php echo $ticket['checkin'] == 0 ? 'No' : 'Yes' ?></td>
+            <td>
+                <?php echo sprintf('<a href="generate_pdf.php?id=%s">Generate PDF</a>', $ticketId); ?>
+            </td>
+        </tr>
+        <?php
+    }
+    ?>
+    </tbody>
+</table>
+
 </body>
 </html>

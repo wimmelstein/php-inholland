@@ -16,6 +16,7 @@ $stmt = $pdo->prepare("select * from users u, tickets t where u.id = t.user_id a
 $stmt->execute(['ticketId' => $ticketId]);
 $user = $stmt->fetch();
 $fullUserName = sprintf("%s %s", $user['first_name'], $user['last_name']);
+$outputUserName = str_replace(' ', '_', $fullUserName);
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
@@ -48,17 +49,18 @@ $pdf->Cell(0, 10, 'Date: ' . date('d-m-Y'), 0, 1, 'L');
 $pdf->Ln();
 
 
-$filename = $output . $fullUserName . '.png';
-
+$filename = $outputUserName . '.png';
 
 $qrcode = new QRCode();
-$qrcode->render('<a href="https://wiltenburgit.nl/checkin?id=$ticketId">Wiltenburg IT</a>', $filename);
+
+$url = sprintf('<a href="http://wiltenburg.tech/checkin?id=%s">Checkin to the Code Fest</a>', $ticketId);
+$qrcode->render($url, $filename);
 $pdf->Image($filename);
 
-$pdfname = 'ticket_' . $fullUserName . '.pdf';
+$pdfname = 'ticket_' . $outputUserName . '.pdf';
 $pdf->Output('F', $output . $pdfname);
 
 // Remove image for privacy reasons
 unlink($filename);
 
-echo 'Done...';
+header("Location: /index.php?generatedTicket=$ticketId");

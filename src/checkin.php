@@ -6,6 +6,6 @@ if (isset($_GET['id'])) {
     $stmt = $pdo->prepare("update tickets set checkin = 1 where id=:id");
     $stmt->execute([id => $_GET['id']]);
 
-    header('Location: /_index.php');
+    header('Location: /index.php');
 
 }
