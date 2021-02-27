@@ -42,16 +42,6 @@ $tickets = $stmt->fetchAll();
 </head>
 <body>
 
-<?php
-
-if (isset($_GET['generatedTicket'])) {
-    ?>
-    <div class="my-message">
-        PDF created for ticket with id: <?php echo $_GET['generatedTicket']; ?>
-    </div>
-    <?php
-}
-?>
 <header>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="index.php">Home</a>
@@ -82,7 +72,12 @@ if (isset($_GET['generatedTicket'])) {
             <td><?php echo $ticket['age'] ?></td>
             <td><?php echo $ticket['checkin'] == 0 ? 'No' : 'Yes' ?></td>
             <td>
-                <?php echo $ticket['checkin'] == 0 ? sprintf('<a href="generate_pdf.php?id=%s">Generate PDF</a>', $ticketId) : ''; ?>
+                <?php echo $ticket['checkin'] == 0
+                    ? (!file_exists("output/$ticketId.pdf"))
+                        ? sprintf('<a href="generate_pdf.php?id=%s">Generate PDF</a>', $ticketId)
+                        : sprintf('<a href="output/%s.pdf" target="_blank">ticket</a>', $ticketId)
+                    : '';
+                ?>
             </td>
         </tr>
         <?php

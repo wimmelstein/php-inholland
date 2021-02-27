@@ -49,7 +49,7 @@ $pdf->Cell(0, 10, 'Date: ' . date('d-m-Y'), 0, 1, 'L');
 $pdf->Ln();
 
 
-$filename = $outputUserName . '.png';
+$filename = $ticketId . '.png';
 
 $qrcode = new QRCode();
 
@@ -57,7 +57,7 @@ $url = sprintf('<a href="http://wiltenburg.tech/checkin.php?id=%s">Checkin to th
 $qrcode->render($url, $filename);
 $pdf->Image($filename);
 
-$pdfname = 'ticket_' . $outputUserName . '.pdf';
+$pdfname = $ticketId . '.pdf';
 if (file_exists($output . $pdfname)) {
     unlink($output . $pdfname);
 }

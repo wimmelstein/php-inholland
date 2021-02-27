@@ -1,0 +1,1 @@
+This is very bad practice, because people can guess the hash
