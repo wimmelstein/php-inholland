@@ -3,6 +3,7 @@
 
 class Config {
 
+    //TODO: Maak afhankelijk van environent variablen. Of middels \ENV of op andere wijze.
     private static $config = [
         'db' => [
             'hostname' => 'db',
@@ -21,7 +22,7 @@ class Config {
         ]
     ];
 
-    public function __construct() {
+    private function __construct() {
     }
 
     /**
@@ -31,6 +32,7 @@ class Config {
         return self::$config['db'];
     }
 
+    //TODO: Use in Jumbotron
     public static function getApplicationConfig(): array {
         return self::$config['general'];
     }

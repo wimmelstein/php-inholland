@@ -1,3 +1,3 @@
 cd src
 composer install
-::exit
+exit

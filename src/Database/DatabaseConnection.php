@@ -9,6 +9,7 @@ class DatabaseConnection {
 
     private static $instance;
 
+
     public static function getInstance(): PDO {
         if (empty(self::$instance)) {
             $config = Config::getDBConfig();

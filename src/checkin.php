@@ -6,6 +6,7 @@ if (isset($_GET['id'])) {
 
     $ticketId = $_GET['id'];
     $pdo = DatabaseConnection::getInstance();
+    // TODO: try-catch
     $stmt = $pdo->prepare("update tickets set checkin = 1 where id=:id");
     $stmt->execute(['id' => $ticketId]);
 

@@ -53,7 +53,7 @@ $tickets = $stmt->fetchAll();
     </div>
 </header>
 
-<table class="table" table-hover>
+<table class="table table-hover">
     <thead>
     <th>First Name</th>
     <th>Last Name</th>
@@ -74,6 +74,7 @@ $tickets = $stmt->fetchAll();
             <td>
                 <?php echo $ticket['checkin'] == 0
                     ? (!file_exists("output/$ticketId.pdf"))
+                        //TODO: Misschien moet dit een POST zijn. Nice to have: icon ipv link
                         ? sprintf('<a href="generate_pdf.php?id=%s">Generate PDF</a>', $ticketId)
                         : sprintf('<a href="output/%s.pdf" target="_blank">ticket</a>', $ticketId)
                     : '';
