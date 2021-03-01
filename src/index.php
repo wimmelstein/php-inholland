@@ -60,6 +60,8 @@ $tickets = $stmt->fetchAll();
     <div class="jumbotron  jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">PDF Generation</h1>
+            <hr>
+            <p><?php echo Config::getApplicationConfig()['applicationName']; ?></p>
         </div>
     </div>
 </header>

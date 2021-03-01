@@ -32,7 +32,6 @@ class Config {
         return self::$config['db'];
     }
 
-    //TODO: Use in Jumbotron
     public static function getApplicationConfig(): array {
         return self::$config['general'];
     }
