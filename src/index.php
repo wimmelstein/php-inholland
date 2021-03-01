@@ -17,7 +17,7 @@ $users = $stmt->fetchAll();
  * Fill the tickets
  */
 foreach ($users as $user) {
-    if (!isset($_GET['generatedTicket'])) {
+    if (!empty($_GET)) {
         $eventId = OneTwoOrThree();
         $stmt = $pdo->prepare("select user_id from tickets where user_id=:user_id and event_id = :event_id");
         $stmt->execute(['user_id' => $user['id'], 'event_id' => $eventId]);
