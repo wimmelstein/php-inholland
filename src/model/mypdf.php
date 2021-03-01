@@ -12,12 +12,14 @@ class PDF extends FPDF {
     function Header() {
         // Logo
         $this->Image('logo.png', 10, 6, 30);
+        // New Line
+        $this->Ln();
         // Arial bold 15
         $this->SetFont('Arial', 'B', 15);
         // Move to the right
         $this->Cell(80);
         // Title
-        $this->Cell(55, 10, 'Ticket to Wimmelsoft', 1, 0, 'C');
+        $this->Cell(100, 10, 'Ticket to Inholland Haarlem Festival', 1, 0, 'C');
         // Line break
         $this->Ln(20);
     }

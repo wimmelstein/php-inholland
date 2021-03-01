@@ -7,25 +7,36 @@ $pdo = DatabaseConnection::getInstance();
 $stmt = $pdo->query("select * from users");
 $users = $stmt->fetchAll();
 
+function OneOrTwo(): int {
+    return rand(1, 2);
+}
 
 /*
  * Fill the tickets
  */
 foreach ($users as $user) {
-    $hash = hash('md5', $user['first_name']);
-    $stmt = $pdo->prepare("select user_id from tickets where user_id=:userid");
-    $stmt->execute(['userid' => $user['id']]);
-    if ($stmt->rowCount() == 0) {
-        $stmt = $pdo->prepare("insert into tickets (id, user_id, checkin) values (:id, :user_id, :checkin)");
-        $stmt->execute(['id' => $hash, 'user_id' => $user['id'], 'checkin' => 0]);
+    $eventId = OneOrTwo();
+    $stmt = $pdo->prepare("select user_id from tickets where user_id=:user_id and event_id = :event_id");
+    $stmt->execute(['user_id' => $user['id'], 'event_id' => $eventId]);
+    if ($stmt->rowCount() == 0 && !isset($_GET['generatedTicket'])) {
+        $stmt = $pdo->prepare("select * from events where id = :id");
+        $stmt->execute(['id' => $eventId]);
+        $event = $stmt->fetch();
+        $stringToHash = implode('-', [$user['first_name'] . $user['last_name'] . implode('-', $event)]);
+        $hash = hash('md5', $stringToHash);
+        $stmt = $pdo->prepare("insert into tickets (id, user_id, event_id, checkin) values (:id, :user_id, :event_id, :checkin)");
+        $stmt->execute(['id' => $hash, 'user_id' => $user['id'], 'event_id' => $eventId, 'checkin' => 0]);
     }
+
     $stmt = $pdo->query("select * from tickets");
     $tickets = $stmt->fetchAll();
 }
 
-$stmt = $pdo->query("select t.id, t.user_id, u.first_name, u.last_name, u.age, t.checkin from  users u, tickets t where u.id = t.user_id");
+$stmt = $pdo->query(
+    "select t.id, t.user_id, e.type, e.date, u.first_name, u.last_name, u.age, t.checkin from  users u, tickets t, events e " .
+    "where u.id = t.user_id and t.event_id = e.id"
+);
 $tickets = $stmt->fetchAll();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +69,8 @@ $tickets = $stmt->fetchAll();
     <th>First Name</th>
     <th>Last Name</th>
     <th>Age</th>
+    <th>Event</th>
+    <th>Date</th>
     <th>Checked in</th>
     <th>Action</th>
     </thead>
@@ -70,6 +83,8 @@ $tickets = $stmt->fetchAll();
             <td><?php echo $ticket['first_name'] ?></td>
             <td><?php echo $ticket['last_name'] ?></td>
             <td><?php echo $ticket['age'] ?></td>
+            <td><?php echo $ticket['type'] ?></td>
+            <td><?php echo $ticket['date'] ?></td>
             <td><?php echo $ticket['checkin'] == 0 ? 'No' : 'Yes' ?></td>
             <td>
                 <?php echo $ticket['checkin'] == 0
