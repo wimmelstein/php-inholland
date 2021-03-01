@@ -34,13 +34,30 @@ CREATE TABLE IF NOT EXISTS `tickets`
     `user_id`  int(11)      NOT NULL,
     `event_id` int(11)      NOT NULL,
     `checkin`  TINYINT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (event_id) REFERENCES events (id)
-);
+    PRIMARY KEY
+(
+    id
+),
+    FOREIGN KEY
+(
+    user_id
+) REFERENCES users
+(
+    id
+),
+    FOREIGN KEY
+(
+    event_id
+) REFERENCES events
+(
+    id
+)
+    );
 
 
 insert into events (id, date, type)
 values (1, DATE_ADD(curdate(), interval + 4 DAY), 'JAZZ');
 insert into events (id, date, type)
 values (2, DATE_ADD(curdate(), interval + 4 DAY), 'FOOD');
+insert into events (id, date, type)
+values (3, DATE_ADD(curdate(), interval + 4 DAY), 'DANCE');
