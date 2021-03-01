@@ -20,26 +20,32 @@ function displayGuitars() {
     const guitarDisplay = document.getElementById('guitars');
     const choice = prompt('Welke gitaar wil je zien (stratocaster/telecaster)');
 
-    let text = '<table class="table">';
+    let tableHeader = `<table class="table"><theader><th>Brand</th><th>Model</th><th>Price</th></theader>`;
     /*
      Higher order function filter in Functional programming -- Function takes another function as an argument
      Could have been written as function(guitar) { return guitar.model === choice }
+     Returns: array
     */
-    const chosenGuitars = guitars.filter(g => g.model === choice);
+    chosenGuitars = guitars.filter(g => g.model === choice);
 
-    // Higher order function map
-    const content = chosenGuitars.map(guitar => transformToText(guitar));
+    console.log(chosenGuitars);
 
-    text += content;
-    text += '</table>';
+    let tableBody = `<tbody>`;
+    let content = '';
+
+    chosenGuitars.forEach(r => {
+            // Destructuring an object. Can be a subset of the fields
+            let {brand, model, price} = r;
+            content += `<tr><td>${brand}</td><td>${model}</td><td>${price}</td></tr>`;
+        }
+    );
+    tableBody += content + '</tbody></table>'
+
 
     // Display table if a guitar was actually chosen.If not just return Not found
-    guitarDisplay.innerHTML = (content.length) ? text : 'Not found';
+    guitarDisplay.innerHTML = (chosenGuitars) ? tableHeader + tableBody : 'Not found';
 }
 
-function transformToText(guitar) {
-    return `<tr><td>${guitar.brand}</td><td>${guitar.model}</td><td>${guitar.price}</td></tr>`;
-}
 
 // Array of objects in Javascript Standard Object Notiation or JSON
 const guitars = [
@@ -52,5 +58,10 @@ const guitars = [
         brand: 'fender',
         model: 'telecaster',
         price: 2500.00
+    },
+    {
+        brand: 'cort',
+        model: 'stratocaster',
+        price: 700.00
     }
 ];
