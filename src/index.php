@@ -27,9 +27,6 @@ foreach ($users as $user) {
         $stmt = $pdo->prepare("insert into tickets (id, user_id, event_id, checkin) values (:id, :user_id, :event_id, :checkin)");
         $stmt->execute(['id' => $hash, 'user_id' => $user['id'], 'event_id' => $eventId, 'checkin' => 0]);
     }
-
-    $stmt = $pdo->query("select * from tickets");
-    $tickets = $stmt->fetchAll();
 }
 
 $stmt = $pdo->query(
