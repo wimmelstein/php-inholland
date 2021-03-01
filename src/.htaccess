@@ -1,0 +1,8 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+# block phpinfo.php
+RewriteCond %{HTTP_HOST} !^localhost$
+RewriteCond %{HTTP_HOST} !^127.0.0.1$
+#RewriteRule ^phpinfo.php$ index.php [L]
+RewriteRule ^phpinfo.php$ - [L,R=404]
