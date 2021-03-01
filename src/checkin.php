@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
         unlink("output/$ticketId.pdf");
         header('Location: /thank_you.php');
     } else {
-        http_response_code(400);
-        header("Location: checkin_error.php");
+        header("Location: /checkin_error.php", true, 400);
+        include_once 'checkin_error.php';
     }
 }
