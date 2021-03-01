@@ -21,22 +21,27 @@ function displayGuitars() {
     const choice = prompt('Welke gitaar wil je zien (stratocaster/telecaster)');
 
     let text = '<table class="table">';
-    const chosenGuitars = guitars.filter(e => e.model === choice);
-    console.log(chosenGuitars);
-    chosenGuitars.forEach(guitar => {
-        text += transformText(guitar);
-    });
+    /*
+     Higher order function filter in Functional programming -- Function takes another function as an argument
+     Could have been written as function(guitar) { return guitar.model === choice }
+    */
+    const chosenGuitars = guitars.filter(g => g.model === choice);
+
+    // Higher order function map
+    const content = chosenGuitars.map(guitar => transformToText(guitar));
+
+    text += content;
     text += '</table>';
-    guitarDisplay.innerHTML = text;
 
-};
+    // Display table if a guitar was actually chosen.If not just return Not found
+    guitarDisplay.innerHTML = (content.length) ? text : 'Not found';
+}
 
-function transformText(guitar) {
-    console.log(guitar);
+function transformToText(guitar) {
     return `<tr><td>${guitar.brand}</td><td>${guitar.model}</td><td>${guitar.price}</td></tr>`;
 }
 
-
+// Array of objects in Javascript Standard Object Notiation or JSON
 const guitars = [
     {
         brand: 'fender',
