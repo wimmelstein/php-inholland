@@ -1,4 +1,6 @@
+# Option to follow symbolic links. -FollowSymLinks switches it off
 Options +FollowSymLinks
+# URL rewriting does not work without this setting:
 RewriteEngine On
 
 # if directory does not exist
