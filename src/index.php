@@ -8,24 +8,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="Cache-control" content="no-cache" />
 
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
-  <header>
+<header>
     <h1 class="display4">Javascript events</h1>
     <button type="submit" class="btn btn-primary btn-lg" onClick="my_alert('boomer')">Alert</button>
     <button type="submit" class="btn btn-secondary btn-lg" onClick="myConfirm()">Confirm</button>
     <button type="submit" class="btn btn-success btn-lg" onClick="myPrompt()">Prompt</button>
-    <button type="submit" class="btn btn-secondary btn-lg" onclick="displayGuitars()">Display them</button>
-  </header>
+    <button type="submit" class="btn btn-secondary btn-lg" onClick="displayGuitars()">Filter Guitars</button>
+    <button type="submit" class="btn btn-secondary btn-lg" onClick="mapGuitars()">Map Guitars</button>
+</header>
 
-  <div id="container">
+<div id="container">
     <div id="food" class="left">Placeholder text food</div>
     <div id="quit" class="right">Placeholder text quit</div>
-  </div>
+</div>
 
-  <div id="guitars" class="left"></div>
+<div id="guitars" class="left"></div>
+<div id="guitarMap" class="right"></div>
+
 </body>
 
 

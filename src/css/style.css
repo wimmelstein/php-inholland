@@ -13,11 +13,14 @@
         width: 100%;
       }
 
+    /* TODO: alight to left; */
     .left {
         width: 50%;
+        align-content: flex-start;
     }
 
     .right {
+        align-content: flex-end;
         width: 50%;
     }
     #food {
