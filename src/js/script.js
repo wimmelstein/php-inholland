@@ -32,23 +32,23 @@ function displayGuitars() {
     let tableBody = `<tbody>`;
     let content = '';
 
-    chosenGuitars.forEach(row => {
+    chosenGuitars.forEach(guitar => {
             // Destructuring an object. Can be a subset of the fields
-            let {brand, model, price} = row;
+            let {brand, model, price} = guitar;
             content += `<tr><td>${brand}</td><td>${model}</td><td>${price}</td></tr>`;
         }
     );
     tableBody += content + '</tbody></table>';
 
     // Display table if a guitar was actually chosen.If not just return Not found
-    guitarDisplay.innerHTML = (chosenGuitars) ? tableHeader + tableBody : 'Not found';
+    guitarDisplay.innerHTML = (chosenGuitars.length > 0) ? tableHeader + tableBody : 'Not found';
 }
 
 
 // Function map && forEach loop with multiline lambda
 function mapGuitars() {
     // Mapping the guitar object to just its model
-    guitars.map(g => g.model)
+    guitars.map(guitar => guitar.model)
         // For each model write to div
         .forEach(model => {
             const mapElement = document.getElementById('guitarMap');
