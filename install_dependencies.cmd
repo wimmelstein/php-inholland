@@ -2,7 +2,7 @@
 cd src
 
 :: Remove node modules first
-del /f /q /s node_modules > NUL
+del /f /q /s node_modules 2>NUL
 
 :: NodeJS must be installed
-npm install signature_pad
+npm install
