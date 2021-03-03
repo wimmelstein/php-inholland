@@ -1,5 +1,4 @@
 function my_alert(e) {
-    console.log(e);
     alert('OK ' + e);
 }
 
