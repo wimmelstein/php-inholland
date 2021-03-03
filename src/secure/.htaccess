@@ -1,8 +1,0 @@
-# Setting a different DirectoryIndex on a directory
-DirectoryIndex index.secure
-
-# Setting up a secure part of the site, using htaccess
-AuthType Basic
-AuthName "Secure files"
-AuthUserFile /var/www/html/secure/.htpasswd
-Require valid-user
