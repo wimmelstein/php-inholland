@@ -1,3 +1,4 @@
+# Does not run from IntelliJ right-click / Run...
 # Go to the correct directory
 $project_dir = ($pwd).Path
 $script_dir = -join ($project_dir, "\src")
