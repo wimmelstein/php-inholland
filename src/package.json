@@ -1,0 +1,16 @@
+{
+  "name": "php2",
+  "repository": "https://github.com/wimmelstein/php-inholland",
+  "version": "1.0.0",
+  "description": "Inholland PHP2 Project",
+  "main": "js/canvas.js",
+  "dependencies": {
+    "signature_pad": "^3.0.0-beta.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
