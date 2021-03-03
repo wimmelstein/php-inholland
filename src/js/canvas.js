@@ -1,14 +1,24 @@
-var canvas = document.getElementById("canvas");
+import SignaturePad from 'signature_pad';
+
+const canvas = document.getElementById("canvas");
 canvas.height = 250;
 canvas.width = 700;
-const signature = new SignaturePad(canvas);
-const context = canvas.getContext('2d');
+
+// Library is installed using
+// $ npm install signature_pad
+const signaturePad = new SignaturePad(canvas);
+
 function saveImage() {
-    const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-    window.location.href = image;
+    // save image with name is done with Javascript
+    let file = document.createElement('a');
+    const fileName = prompt('Name your file');
+    file.href = signaturePad.toDataURL();
+    file.download = (fileName) ? fileName : 'untitled';
+    document.body.appendChild(file);
+    file.click();
+    document.body.removeChild(file);
 }
 
 function reset() {
-    
-   context.clearRect(0, 0, canvas.width, canvas.height);
+    signaturePad.clear();
 }
