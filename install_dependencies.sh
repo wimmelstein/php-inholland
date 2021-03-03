@@ -1,8 +1,12 @@
 # Go to the correct directory
-cd src
+# shellcheck disable=SC2155
+export projectdir=`pwd`
+export scriptdir="$projectdir/src"
+# shellcheck disable=SC2164
+cd "$scriptdir"
 
-# Remove node_modules first
-rm -rf node_modules 2>/dev/null
-
-# NodeJS must be installed for this to work:
+npm clean-install
 npm install
+
+# shellcheck disable=SC2164
+cd "$projectdir"

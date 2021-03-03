@@ -1,6 +1,6 @@
 import SignaturePad from '/node_modules/signature_pad/dist/signature_pad.js';
 
-window.addEventListener('load', function () {
+window.addEventListener('DOMContentLoaded', function () {
     document.getElementById('saveImage').addEventListener('click', saveImage);
     document.getElementById('resetImage').addEventListener('click', reset);
 })
