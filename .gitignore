@@ -1,5 +1,3 @@
-/mollie/lock
-/mollie/log
-/mollie/run
-/certs/**
-/server/*.log
+/src/public/server/*.log
+/.idea
+/src/vendor/
