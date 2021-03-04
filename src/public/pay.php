@@ -1,5 +1,7 @@
 <?php
 
+include_once '../bootstrap.php';
+
 use Mollie\Api\MollieApiClient;
 
 $mollie = new MollieApiClient();

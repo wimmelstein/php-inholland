@@ -39,7 +39,7 @@ services:
       - "./include/apache2.conf:/etc/apache2/apache2.conf"
       - "./include/000-default.conf:/etc/apache2/sites-available/000-default.conf"
 
-  adminer:
+  phpmyadmin:
     image: phpmyadmin:latest
     ports:
       - 8080:80
