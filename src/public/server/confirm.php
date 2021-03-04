@@ -13,7 +13,7 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    "Authorization: Bearer test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8"
+    "Authorization: Bearer test_hr4WE4RzGvWJuQRRv3uyNzh6hwgzAW"
 ));
 
 $result = curl_exec($ch);
@@ -21,8 +21,10 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 $json = json_decode($result, true);
-$date = date("YYYY-mm-dd : H:i :");
-fwrite($file, $date . var_dump($result) . PHP_EOL);
+echo var_dump($json);
+$date = date("Y-m-d:H:i");
+
+fwrite($file, "$date: received confirmation of payment $payment_id with descript  " . PHP_EOL);
 fclose($file);
 
 $status = $json['status'];

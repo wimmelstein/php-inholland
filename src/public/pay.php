@@ -5,7 +5,7 @@ include_once '../bootstrap.php';
 use Mollie\Api\MollieApiClient;
 
 $mollie = new MollieApiClient();
-$mollie->setApiKey("test_Ds3fz4U9vNKxzCfVvVHJT2sgW5ECD8");
+$mollie->setApiKey("test_hr4WE4RzGvWJuQRRv3uyNzh6hwgzAW");
 
 $amount = $_POST['amount'];
 $description = $_POST['description'];
