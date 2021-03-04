@@ -5,8 +5,8 @@ FROM php:7.2-apache
 RUN a2enmod rewrite
 RUN a2enmod ssl
 
-COPY ./apache/apache2.conf /etc/apache2/
-COPY ./apache/jacksguitarshop.com.conf /etc/apache2/sites-available/
+COPY include/apache2.conf /etc/apache2/
+COPY include/jacksguitarshop.com.conf /etc/apache2/sites-available/
 
 RUN a2ensite jacksguitarshop.com.conf
 RUN mkdir /var/tmp/certs

@@ -1,5 +1,7 @@
 {
-    "require": {
-        "mollie/mollie-api-php": "^2.0"
-    }
+  "require": {
+    "mollie/mollie-api-php": "^2.0",
+    "ext-pdo_mysql": "*",
+    "ext-curl": "*"
+  }
 }
