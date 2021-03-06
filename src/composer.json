@@ -1,7 +1,17 @@
 {
-    "require": {
-      "fpdf/fpdf": "1.82.1",
-      "chillerlan/php-qrcode": "^4.3",
-      "ext-pdo": "*"
+  "require": {
+    "fpdf/fpdf": "1.82.1",
+    "chillerlan/php-qrcode": "^4.3",
+    "ext-pdo": "*"
+  },
+  "name": "wimmelsoft/php2",
+  "description": "Inholland PHP2 Project",
+  "authors": [
+    {
+      "name": "Wim Wiltenburg",
+      "email": "info@wiltenburgit.nl",
+      "role": "Lead Developer"
     }
+  ],
+  "license": "MIT"
 }
