@@ -1,4 +1,13 @@
 {
+  "name": "wimmelsoft/php2",
+  "description": "Inholland PHP2 Project",
+  "authors": [
+    {
+      "name": "Wim Wiltenburg",
+      "email": "info@wiltenburgit.nl",
+      "role": "Lead Developer"
+    }
+  ],
   "require": {
     "mollie/mollie-api-php": "^2.0",
     "ext-pdo_mysql": "*",
