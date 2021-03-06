@@ -1,9 +1,4 @@
 {
-  "require": {
-    "fpdf/fpdf": "1.82.1",
-    "chillerlan/php-qrcode": "^4.3",
-    "ext-pdo": "*"
-  },
   "name": "wimmelsoft/php2",
   "description": "Inholland PHP2 Project",
   "authors": [
@@ -13,5 +8,10 @@
       "role": "Lead Developer"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "require": {
+    "fpdf/fpdf": "1.82.1",
+    "chillerlan/php-qrcode": "^4.3",
+    "ext-pdo": "*"
+  }
 }
