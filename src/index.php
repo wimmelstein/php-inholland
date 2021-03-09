@@ -20,15 +20,6 @@
             <p>Signature Pad by <a href="https://github.com/szimek/signature_pad">szimek</a></p>
         </div>
     </div>
-
 </header>
-<section id="body">
-    <canvas id="canvas"></canvas>
-    <script type='module' src="js/canvas.js"></script>
-    <div id="buttons">
-        <button type="submit" id="saveImage" class="btn btn-primary">Save</button>
-        <button type="submit" id="resetImage" class="btn btn-secondary" onClick="reset()">Reset</button>
-
-</section>
 </body>
 </html>

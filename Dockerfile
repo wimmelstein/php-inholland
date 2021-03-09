@@ -5,6 +5,5 @@ FROM php:7.4.15-apache
 RUN a2enmod rewrite
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
-
+RUN apt-get update && apt-get install -y cron rsyslog dos2unix vim
 RUN docker-php-ext-install mysqli pdo pdo_mysql
-

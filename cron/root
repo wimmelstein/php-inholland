@@ -1,0 +1,1 @@
+* * * * * /usr/local/bin/php /opt/cron.php >> /var/log/cronlog

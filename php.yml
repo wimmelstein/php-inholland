@@ -15,13 +15,14 @@ services:
       MYSQL_DATABASE: inholland
       MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: mysql
+      TZ: "Europe/Amsterdam"
     volumes:
       - ./sql-scripts:/docker-entrypoint-initdb.d/
     networks:
       - php
 
   server:
-    image: wimmelsoft/php-mysql-pdo:0.1
+    image: wimmelsoft/php-server:1.8.1
     depends_on:
       - db
     deploy:
@@ -34,7 +35,11 @@ services:
       - 80:80
     networks:
       - php
+    environment:
+      TZ: "Europe/Amsterdam"
+      API_KEY: "<INSERT API_KEY HERE>"
     volumes:
+      - "./cron/cron.php:/opt/scripts/cron.php"
       - ./src:/var/www/html
 
   phpmyadmin:
