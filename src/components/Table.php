@@ -1,6 +1,6 @@
 <?php
 
-
+namespace app\components;
 class Table
 {
     private $tableHeaders;

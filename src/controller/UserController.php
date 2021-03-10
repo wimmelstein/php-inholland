@@ -1,16 +1,16 @@
 <?php
 
 namespace app\controller;
-
 use app\core\Application;
 use app\service\UserService;
+
+require_once dirname(__FILE__) . '/../bootstrap.php';
 
 class UserController
 {
 
     function __construct()
     {
-        require_once(Application::$ROOT_DIR . "/service/UserService.php");
         $this->userService = new UserService();
     }
 

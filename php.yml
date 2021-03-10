@@ -21,7 +21,7 @@ services:
       - php  
 
   server:
-    image: wimmelsoft/php-mysql-pdo:0.1
+    image: wimmelsoft/php-server:1.8.1
     depends_on:
       - db
     deploy:
@@ -32,10 +32,14 @@ services:
         window: 120s
     ports:
       - 80:80
+      - 443:443
     networks:
       - php
     volumes:
-      - ./src:/var/www/html
+      - "./include/apache2.conf:/etc/apache2/apach2.conf"
+      - "./include/000-default.conf:/etc/apache2/sites-available/000-default.conf"
+      - "./include/default-ssl.conf:/etc/apache2/sites-available/default-ssl.conf"
+      - "./src:/var/www/html"
 
   phpmyadmin:
     image: phpmyadmin:latest

@@ -1,14 +1,12 @@
 <?php
 
+use app\components\Button;
+use app\components\Form;
+use app\components\Jumbotron;
+use app\components\Table;
 use app\core\Application;
 
-include_once(Application::$ROOT_DIR . '/model/user.php');
-include_once(Application::$ROOT_DIR . '/components/Jumbotron.php');
-include_once(Application::$ROOT_DIR . '/components/Table.php');
-include_once(Application::$ROOT_DIR . '/components/Button.php');
-include_once(Application::$ROOT_DIR . '/components/Form.php');
-include_once(Application::$ROOT_DIR . '/components/Link.php');
-include_once(Application::$ROOT_DIR . '/controller/UserController.php');
+require_once dirname(__FILE__) . '/../bootstrap.php';
 
 Application::injectScript("/js/users.js");
 echo new Jumbotron($title, $subTitle);

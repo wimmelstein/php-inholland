@@ -1,6 +1,6 @@
 <?php
 
-require_once('core/Application.php');
+require_once dirname(__FILE__) . '/../bootstrap.php';
 
 use app\controller\UserController;
 use app\core\Application;

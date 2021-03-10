@@ -1,6 +1,9 @@
 <?php
 
 namespace app\core;
+
+require_once dirname(__FILE__) . '/../bootstrap.php';
+
 class Router
 {
 
@@ -87,7 +90,7 @@ class Router
     private function layoutContent()
     {
         ob_start();
-        include_once(Application::$ROOT_DIR . "/layout/main.php");
+        include_once(Application::$ROOT_DIR . "/../layout/main.php");
         return ob_get_clean();
     }
 
@@ -97,7 +100,7 @@ class Router
             $$key = $value;
         }
         ob_start();
-        include_once(Application::$ROOT_DIR . "/views/$view.php");
+        include_once(Application::$ROOT_DIR . "/../views/$view.php");
         return ob_get_clean();
 
     }

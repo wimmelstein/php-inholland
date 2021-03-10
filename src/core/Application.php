@@ -4,10 +4,7 @@ namespace app\core;
 use app\controller\UserController;
 use PDO;
 
-require_once('Router.php');
-require_once('Request.php');
-require_once('Response.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/controller/UserController.php');
+require_once dirname(__FILE__) . '/../bootstrap.php';
 
 class Application
 {

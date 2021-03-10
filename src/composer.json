@@ -1,0 +1,27 @@
+{
+  "authors": [
+    {
+      "name": "Wim Wiltenburg",
+      "email": "info@wiltenburgit.nl",
+      "role": "Lead developer"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\core\\": "core",
+      "app\\service\\": "service",
+      "app\\controller\\": "controller",
+      "app\\components\\": "components"
+    }
+  },
+  "require": {
+    "ext-pdo_mysql": "*",
+    "ext-curl": "*",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9"
+  },
+  "name": "wimmelsoft/php2",
+  "description": "PHP 2 Inholland Project"
+}
