@@ -43,12 +43,16 @@ $API_FILE = getenv('API_KEY_FILE');
 $API_KEY = file_get_contents($API_FILE);
 $KELVIN = 275.15;
 $pdo = DatabaseConnection::getPDOConnection(DatabaseConnection::$config['db']);
-$url = "https://api.openweathermap.org/data/2.5/weather?lat=52.4308&lon=4.9153&appid=$API_KEY";
+$url = "https://api.openweathermap.org/data/2.5/weather?appid=$API_KEY&lat=52.4308&lon=4.9153";
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 $output = json_decode(curl_exec($curl), true);
+if (is_null($output)) {
+    echo "Someting went wrong" . PHP_EOL;
+    exit;
+}
 curl_close($curl);
 
 $location = $output['name'] ?? 'unknown';
