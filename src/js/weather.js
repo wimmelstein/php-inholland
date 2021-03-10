@@ -14,14 +14,12 @@ navigator.geolocation.getCurrentPosition(pos => {
                     .then(response => response.json())
                     .then((data) => {
                         const locationDiv = document.getElementById('location');
-                        const currentDiv = document.getElementById('current');
-                        const descriptionDiv = document.getElementById('description');
-                        locationDiv.innerHTML = `Your city is: ${data.name}`;
-                        currentDiv.innerHTML = `Temperature: ${Math.round(data.main.temp - 275.15, 2)}&#176;`
-                        descriptionDiv.innerHTML = `Description: ${data.weather[0].description}`
+                        locationDiv.innerHTML = `${data.name}: `;
+                        locationDiv.innerHTML += `${data.weather[0].description}: `;
+                        locationDiv.innerHTML += `${Math.round(data.main.temp - 275.15, 2)}&#176;`
                     });
             })
     },
-    (error) => console.log('Something went wrong')
+    (error) => console.log('Something went wrong: ' + error.message)
 );
 

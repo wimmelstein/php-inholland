@@ -12,8 +12,14 @@ body {
 #buttons {
     display: flex;
     flex-direction: column;
-   margin-bottom: auto;
+    margin-bottom: auto;
 }
+
 canvas {
-  border: 10px solid black;
+    border: 10px solid black;
 }
+
+#location {
+    color: white;
+}
+

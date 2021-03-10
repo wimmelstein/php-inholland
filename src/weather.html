@@ -14,8 +14,20 @@
 <body>
 
 <header>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-primary rounded">
         <a class="navbar-brand" href="index.php">Home</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://openweathermap.org/">OpenWeatherMaps</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <div id="location"></div>
+                <div id="current"></div>
+                <div id="description"></div>
+            </li>
+        </ul>
     </nav>
     <div class="jumbotron  jumbotron-fluid">
         <div class="container">
@@ -26,8 +38,14 @@
     </div>
 </header>
 <script src="js/weather.js"></script>
-<div id="location"></div>
-<div id="current"></div>
-<div id="description"></div>
+<!-- TODO: Implementeer de zoekfunctionaliteit -->
+<form>
+    <fieldset>
+        <label for="search">Location: </label><input type="text" name="search" id="search">
+        <input type="submit" value="Search">
+    </fieldset>
+</form>
+
+
 </body>
 </html>
