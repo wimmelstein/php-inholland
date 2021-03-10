@@ -37,7 +37,10 @@ services:
       - php
     environment:
       TZ: "Europe/Amsterdam"
-      API_KEY: "<INSERT API_KEY HERE>"
+      API_KEY_FILE: /run/secrets/API_KEY
+    secrets:
+      - API_KEY
+
     volumes:
       - "./cron/cron.php:/opt/scripts/cron.php"
       - ./src:/var/www/html
@@ -56,6 +59,10 @@ services:
       PMA_HOST: db
     networks:
       - php
+
+secrets:
+  API_KEY:
+    external: true
 
 networks:
   php:
