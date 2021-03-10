@@ -14,9 +14,11 @@ navigator.geolocation.getCurrentPosition(pos => {
                     .then(response => response.json())
                     .then((data) => {
                         const locationDiv = document.getElementById('location');
-                        locationDiv.innerHTML = `${data.name}: `;
-                        locationDiv.innerHTML += `${data.weather[0].description}: `;
-                        locationDiv.innerHTML += `${Math.round(data.main.temp - 275.15, 2)}&#176;`
+                        const temperature = Math.round(data.main.temp - 275.15, 2);
+                        const feelsLike = Math.round(data.main.feels_like - 275.15, 2);
+                        const description = data.weather[0].description;
+                        const locationName = data.name;
+                        locationDiv.innerHTML = `${locationName}: ${description}: ${temperature}&#176;: feels like ${feelsLike} `;
                     });
             })
     },
