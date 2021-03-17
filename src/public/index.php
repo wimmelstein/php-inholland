@@ -68,14 +68,15 @@ $tickets = $stmt->fetchAll();
 </header>
 
 <table class="table table-hover">
+    <caption>Tickets</caption>
     <thead>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Age</th>
-    <th>Event</th>
-    <th>Date</th>
-    <th>Checked in</th>
-    <th>Action</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Age</th>
+    <th scope="col">Event</th>
+    <th scope="col">Date</th>
+    <th scope="col">Checked in</th>
+    <th scope="col">Action</th>
     </thead>
     <tbody>
     <?php
