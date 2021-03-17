@@ -1,10 +1,11 @@
 <?php
 
-include_once('Database/DatabaseConnection.php');
+include_once dirname(__FILE__) . '/../bootstrap.php';
 
 if (isset($_GET['id'])) {
     $ticketId = $_GET['id'];
-    $pdo = DatabaseConnection::getInstance();
+
+    $pdo = Bootstrap::getPDO();
     $stmt = $pdo->prepare("select * from tickets where id = :id");
     $stmt->execute(['id' => $ticketId]);
     $checkedIn = $stmt->fetch()['checkin'];

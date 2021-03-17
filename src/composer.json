@@ -8,6 +8,11 @@
       "role": "Lead Developer"
     }
   ],
+  "autoload": {
+    "psr-4": {
+      "app\\model\\": "model/"
+    }
+  },
   "license": "MIT",
   "require": {
     "fpdf/fpdf": "1.82.1",

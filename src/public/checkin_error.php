@@ -1,5 +1,6 @@
 <?php
-include_once 'Config.php';
+include_once dirname(__FILE__) . '/../bootstrap.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +24,7 @@ include_once 'Config.php';
         <div class="container">
             <h1 class="display-4">Error</h1>
             <hr>
-            <p><?php echo Config::getApplicationConfig()['applicationName']; ?></p>
+            <p><?php echo Bootstrap::getGeneralConfig()['applicationName']; ?></p>
         </div>
     </div>
 </header>

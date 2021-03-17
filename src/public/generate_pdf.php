@@ -1,12 +1,10 @@
 <?php
-
-include_once('Database/DatabaseConnection.php');
-include_once 'model/mypdf.php';
+include_once dirname(__FILE__) . '/../bootstrap.php';
 
 use app\model\PDF;
 use chillerlan\QRCode\QRCode;
 
-$pdo = DatabaseConnection::getInstance();
+$pdo = Bootstrap::getPDO();
 $ticketId = $_GET['id'];
 $stmt = $pdo->prepare("select * from tickets where id=:id");
 $stmt->execute(['id' => $ticketId]);
@@ -24,7 +22,7 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Arial', '', 20);
 
-$output = __DIR__ . '/output/';
+$output = dirname(__FILE__) . '/output/';
 $pdf->Cell(0, 10, $data['type'], 0, 1, 'C');
 
 

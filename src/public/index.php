@@ -1,8 +1,8 @@
 <?php
 
-include_once('Database/DatabaseConnection.php');
+include_once dirname(__FILE__) . '/../bootstrap.php';
 
-$pdo = DatabaseConnection::getInstance();
+$pdo = Bootstrap::getPDO();
 
 // Function to get a random 1, 2 or 3. This corresponds to event ID
 function OneTwoOrThree(): int
@@ -62,7 +62,7 @@ $tickets = $stmt->fetchAll();
         <div class="container">
             <h1 class="display-4">PDF Generation</h1>
             <hr>
-            <p><?php echo Config::getApplicationConfig()['applicationName']; ?></p>
+            <p><?php echo Bootstrap::getGeneralConfig()['applicationName']; ?></p>
         </div>
     </div>
 </header>
