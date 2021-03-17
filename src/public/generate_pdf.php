@@ -51,13 +51,13 @@ $pdf->Ln();
 
 $pdf->Cell(0, 10, 'Present your ticket with QR Code below at the entrance of the event', 0, 1, 'L');
 
-$filename = $ticketId . '.png';
+$qrCodeFileName = $ticketId . '.png';
 
 $qrcode = new QRCode();
 
 $url = sprintf('<a href="http://wiltenburg.tech/checkin.php?id=%s">Checkin to the event</a>', $ticketId);
-$qrcode->render($url, $filename);
-$pdf->Image($filename);
+$qrcode->render($url, $qrCodeFileName);
+$pdf->Image($qrCodeFileName);
 
 $pdfname = $ticketId . '.pdf';
 if (file_exists($output . $pdfname)) {
@@ -66,6 +66,6 @@ if (file_exists($output . $pdfname)) {
 $pdf->Output('F', $output . $pdfname);
 
 // Remove image for privacy reasons
-unlink($filename);
+unlink($qrCodeFileName);
 
 header("Location: /index.php?generatedTicket=$ticketId");
