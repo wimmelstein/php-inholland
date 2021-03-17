@@ -6,7 +6,6 @@ require_once dirname(__FILE__) . '/../bootstrap.php';
 
 use Fpdf\Fpdf;
 
-
 class PDF extends FPDF {
 // Page header
     function Header() {
