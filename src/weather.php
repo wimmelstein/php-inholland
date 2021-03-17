@@ -1,3 +1,8 @@
+<?php
+
+$API_KEY_FILE = getenv('API_KEY_FILE');
+$API_KEY = file_get_contents($API_KEY_FILE);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,9 +45,11 @@
 <form>
     <fieldset>
         <label for="search">Location: </label><input type="text" name="search" id="search">
-        <input type="submit" value="Search">
+        <input type="submit" value="Search" onclick="getWeatherData(<?echo $API_KEY; ?>)">
     </fieldset>
 </form>
+
+<div id="openweathermap-widget-11"></div>
 
 
 </body>
